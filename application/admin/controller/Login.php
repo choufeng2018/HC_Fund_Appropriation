@@ -9,8 +9,8 @@
 namespace app\admin\controller;
 
 
+use app\admin\model\Admin;
 use think\Controller;
-use think\Db;
 
 /**
  * Class Login
@@ -35,11 +35,13 @@ class Login extends Controller
     {
         $username = \input('username');
         $password = \input('password');
-        $correct_password = Db::name('Admin')
-            ->where('username', $username)
-            ->value('password');
-        $res = \checkAdminPassword($password, $correct_password);
-        if ($res) {
+        $captcha = \input('captcha');
+        $rememberme = \input('remmeberme');
+        if (!captcha_check($captcha)) {
+            $this->error('验证码错误');
+        }
+        $admin = new Admin();
+        if ($admin->login(\trim($username, \trim($password, \trim($rememberme))))) {
             \redirect('admin/index/index');
         } else {
             $this->error('密码错误');

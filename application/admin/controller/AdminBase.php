@@ -16,7 +16,7 @@ class AdminBase extends Controller
     public function initialize()
     {
         parent::initialize();
-        $this->checkAdminLogin();
+        //$this->checkAdminLogin();
     }
 
     function checkAdminLogin()
