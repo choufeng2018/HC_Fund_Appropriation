@@ -30,34 +30,32 @@ class Admin extends Model
     public function login($username = '', $password = '', $rememberme = '')
     {
         $user = self::where('username', $username)->find();
-        if (!$user) {
-            $this->error('管理员不存在');
+        if (empty($user)) {
+            $this->error = '管理员不存在';
         } else {
             $pwd_res = \checkAdminPassword($password, $user['password']);
             if ($pwd_res) {
-                $this->error = '密码错误';
-            } else {
-                $admin_id = $user['id'];
-                // 更新登录信息
+                //更新登录信息
                 $user['last_ip'] = request()->ip();
                 $user['last_time'] = time();
                 $user['logtimes'] = $user['logtimes'] + 1;
                 if ($user->save()) {
-                    // 自动登录
-                    $this->autoLogin($user, $rememberme);
+                    return $this->autoLogin($user, $rememberme);
                 }
-                return $admin_id;
+            } else {
+                $this->error = '登录失败!';
             }
         }
-        return false;
     }
+
 
     /**
      * @param $user
-     * @param bool $rememberme
+     * @param $rememberme
+     * @return bool
      * 执行登录
      */
-    private function autoLogin($user, $rememberme = false)
+    private function autoLogin($user, $rememberme)
     {
         $auth = [
             'admin_id' => $user->id,
@@ -68,22 +66,11 @@ class Admin extends Model
         \session('admin_auth', $auth);
         \session('admin_auth_sign', \data_signature($auth));
 
-        if ($rememberme) {
+        if ($rememberme == 'on') {
             $signin_token = $user->username . $user->id . $user->last_time;
             \cookie('admin_id', $user->id, 7 * 24 * 3600);
             \cookie('singin_token', \data_signature($signin_token), 7 * 24 * 3600);
         }
-    }
-
-    /**
-     *登出
-     */
-    public function logout()
-    {
-        \session('admin_auth', null);
-        \session('admin_auth_sign', null);
-        \cookie('admin_id', null);
-        \cookie('signin_token', null);
-        \redirect('admin/login/index');
+        return true;
     }
 }

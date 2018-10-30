@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="__STATIC__/iconfont/iconfont.css">
+    <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="__STATIC__/css/login.css">
+
+
+    <title>企业扶持资金拨付后台</title>
+</head>
+<body>
+<div class="login clearfix">
+    <div class="login-image-box float-left">
+        <img src="__STATIC__/img/login_pic.png" alt="">
+    </div>
+    <div class="login-userinfo float-left">
+        <h4>淮安留创园后台管理系统</h4>
+        <form action="{:url('admin/Login/doLogin')}"method="post">
+            <!-- 用户名 -->
+            <div class="login-username clearfix">
+                <i class="iconfont icon-people_fill float-left"></i>
+                <input class="float-left login-input" type="text" name="username" placeholder="用户名" required>
+            </div>
+            <!-- 密码 -->
+            <div class="login-password clearfix">
+                <i class="iconfont icon-lock_fill float-left"></i>
+                <input class="float-left login-input" type="password" name="password" placeholder="请输入密码" required>
+            </div>
+            <!-- 验证码 -->
+            <div class="login-yzm clearfix">
+                <input type="text" class="login-input login-input-yzm" name="captcha" placeholder="请输入验证码" required/>
+                <img src="{:captcha_src()}" onClick="this.src='{:url('admin/Login/verify')}'+'?'+Math.random()" title="点击获取">
+            </div>
+
+            <label class="user-login-rember">
+                <input name="rememberme" type="checkbox" class="rember"/>
+                <span class="lbl"> 记住信息</span>
+            </label>
+
+            <button type="submit" class="login-login">
+                <span class="">登录</span>
+            </button>
+        </form>
+    </div>
+
+
+</div>
+
+
+<footer>
+    <p>Copyright&copy;2015-2018 ALL rights reserved.
+        <a class="link_a" href="#" rel="nofollow">沪ICP备17024837号-1</a>
+    </p>
+    <p>技术支持:
+        <a href="http://www.qiniuniu.com/" target="_blank" rel="nofollow">
+            <img class="qiniuniu" src="__STATIC__/img/qiniuniu.png"/>
+        </a>
+    </p>
+</footer>
+</body>
+</html>

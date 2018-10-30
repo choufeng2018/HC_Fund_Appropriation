@@ -10,7 +10,8 @@
 // +----------------------------------------------------------------------
 
 // 应用公共文件
-if (function_exists('makeAdminPassword')) {
+
+if (!function_exists('makeAdminPassword')) {
     /**
      * @param $input_password
      * @return bool|string

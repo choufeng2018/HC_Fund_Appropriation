@@ -2,8 +2,6 @@
 
 namespace app\admin\controller;
 
-use app\admin\model\Admin;
-
 /**
  * Class Index
  * @package app\admin\controller
@@ -15,7 +13,7 @@ class Index extends AdminBase
      */
     public function index()
     {
-        echo 1;
+        return '后台首页';
     }
 
     /**
@@ -23,7 +21,10 @@ class Index extends AdminBase
      */
     public function logout()
     {
-        $admin = new Admin();
-        $admin->logout();
+        \session('admin_auth', null);
+        \session('admin_auth_sign', null);
+        \cookie('admin_id', null);
+        \cookie('signin_token', null);
+        $this->redirect('admin/login/index');
     }
 }
