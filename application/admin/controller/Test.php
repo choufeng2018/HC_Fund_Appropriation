@@ -20,7 +20,7 @@ class Test extends Controller
 {
     public function index()
     {
-        \halt(\session('admin_auth'));
+        \halt(\session(''));
     }
     public function makepwd(){
         $pwd = \makeAdminPassword(123456);

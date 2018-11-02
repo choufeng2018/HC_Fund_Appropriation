@@ -7,6 +7,9 @@
     <link rel="stylesheet" href="__STATIC__/iconfont/iconfont.css">
     <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="__STATIC__/css/login.css">
+    <style>
+        body{background-image: url("__STATIC__/img/login_bg.png")}
+    </style>
 
 
     <title>企业扶持资金拨付后台</title>
@@ -32,7 +35,7 @@
             <!-- 验证码 -->
             <div class="login-yzm clearfix">
                 <input type="text" class="login-input login-input-yzm" name="captcha" placeholder="请输入验证码" required/>
-                <img src="{:captcha_src()}" onClick="this.src='{:url('admin/Login/verify')}'+'?'+Math.random()" title="点击获取">
+                <img src="{:captcha_src()}" onClick="this.src='{:url('admin/Login/verify')}'+'?'+Math.random()" title="点击刷新">
             </div>
 
             <label class="user-login-rember">
