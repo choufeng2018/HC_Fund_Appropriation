@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入字体库 -->
+    <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
+
+    <!-- 引入页面css -->
+    <link rel="stylesheet" href="__STATIC__/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
+
+    <!-- 引入jQuery -->
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+    <title>企业扶持资金拨付后台</title>
+</head>
+<body>
+<div class="header">
+    <div class="index-layout">
+        <a class="index-logo" href="./index.html">
+            <img src="__STATIC__/img/logo.png" alt="logo">
+        </a>
+        <div class="user-info">
+            <img src="__STATIC__/img/index/ava.png" alt="头像">
+            <span>{$admin_info.username}</span>
+            <a href="{:url('admin/Index/logout')}">
+                <i class="fa fa-power-off" aria-hidden="true"></i>
+                退出
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="index-banner layout">
+    <img src="__STATIC__/img/index/index_banner.png" alt="留学生创业园项目扶持资金拨付">
+</div>
+
+
+<div class="index-choose layout">
+    <a href="{:url('admin/Enterprise/enterpriseList')}">
+        <div class="index-common-box all-enterprise-bg boxshadow">
+            <div class="index-common-box all-enterprise boxshadow">
+                <div class="index-common-box index-enterprise">
+                    <img src="__STATIC__/img/index/all_enterprise_off.png" alt="">
+                    <p>所有企业</p>
+                </div>
+            </div>
+        </div>
+    </a>
+
+    <a href="">
+        <div class="index-common-box support-enterprise-bg boxshadow">
+            <div class="index-common-box support-enterprise boxshadow">
+                <div class="index-common-box index-support-enterprise">
+                    <img src="__STATIC__/img/index/support_off.png" alt="">
+                    <p>扶持企业</p>
+                </div>
+            </div>
+        </div>
+    </a>
+
+
+</div>
+
+
+{include file="public/footer" /}
+
+
+<script>
+    $('.index-enterprise').on('mouseenter', function () {
+        $('.index-enterprise img').attr('src', '__STATIC__/img/index/all_enterprise_on.png')
+    })
+    $('.index-enterprise').on('mouseleave', function () {
+        $('.index-enterprise img').attr('src', '__STATIC__/img/index/all_enterprise_off.png')
+    })
+
+    $('.index-support-enterprise').on('mouseenter', function () {
+        $('.index-support-enterprise img').attr('src', '__STATIC__/img/index/support_on.png')
+    })
+    $('.index-support-enterprise').on('mouseleave', function () {
+        $('.index-support-enterprise img').attr('src', '__STATIC__/img/index/support_off.png')
+    })
+
+</script>
+</body>
+</html>

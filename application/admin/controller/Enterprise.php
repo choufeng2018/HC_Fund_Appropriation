@@ -20,5 +20,6 @@ class Enterprise extends AdminBase
         $model = new EnterpriseList();
         $list = $model->enterpriseList();
         $this->assign('list', $list);
+        return $this->fetch();
     }
 }

@@ -13,7 +13,7 @@ class Index extends AdminBase
      */
     public function index()
     {
-        return '后台首页';
+        return $this->fetch();
     }
 
     /**

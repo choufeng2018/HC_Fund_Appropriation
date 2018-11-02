@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 
+use app\admin\model\Admin;
 use think\Controller;
 
 /**
@@ -25,6 +26,8 @@ class AdminBase extends Controller
     {
         parent::initialize();
         $this->checkAdminLogin();
+        $admin_info = Admin::get(\session('admin_auth.admin_id'));
+        $this->assign('admin_info', $admin_info);
     }
 
     /**
