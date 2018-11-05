@@ -42,9 +42,9 @@ class EnterpriseList extends Model
      * @throws \think\db\exception\DataNotFoundException
      * @throws \think\db\exception\ModelNotFoundException
      * @throws \think\exception\DbException
-     * 返回企业列表
+     * 返回所有企业列表
      */
-    public function enterpriseList()
+    public function allEnterpriseList()
     {
         $list = self::select();
         return $list;
