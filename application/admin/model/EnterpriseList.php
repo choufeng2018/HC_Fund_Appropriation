@@ -43,12 +43,9 @@ class EnterpriseList extends Model
      * @throws \think\exception\DbException
      * 返回所有企业列表
      */
-    public function allEnterpriseList($key='')
+    public function allEnterpriseList($key)
     {
-//        if (!empty($key)){
-//            $map['enterprise_list_name'] = '';
-//        }
-        $list = self::whereLike('enterprise_list_name','%'.$key.'%')->paginate(15);
+        $list = self::whereLike('enterprise_list_name', '%' . $key . '%')->paginate(10);
         return $list;
     }
 }

@@ -28,8 +28,9 @@ class Enterprise extends AdminBase
      */
     public function enterpriseList()
     {
+        $key = \input('key','');
         $model = new EnterpriseList();
-        $list = $model->allEnterpriseList();
+        $list = $model->allEnterpriseList($key);
         $this->assign('list', $list);
         return $this->fetch();
     }
