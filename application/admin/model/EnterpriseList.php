@@ -37,16 +37,18 @@ class EnterpriseList extends Model
         'prefix' => 'yk_',
     ];
 
+
     /**
-     * @return array|\PDOStatement|string|\think\Collection
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
+     * @return \think\Paginator
      * @throws \think\exception\DbException
      * 返回所有企业列表
      */
-    public function allEnterpriseList()
+    public function allEnterpriseList($key='')
     {
-        $list = self::select();
+//        if (!empty($key)){
+//            $map['enterprise_list_name'] = '';
+//        }
+        $list = self::whereLike('enterprise_list_name','%'.$key.'%')->paginate(15);
         return $list;
     }
 }

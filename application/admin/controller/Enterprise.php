@@ -10,14 +10,13 @@ namespace app\admin\controller;
 
 use app\admin\model\EnterpriseList;
 use app\admin\model\HelpEnterpriseList;
-use think\Controller;
 use think\facade\Request;
 
 /**
  * Class Enterprise
  * @package app\admin\controller
  */
-class Enterprise extends Controller
+class Enterprise extends AdminBase
 {
 
     /**

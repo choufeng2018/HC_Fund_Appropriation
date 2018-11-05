@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入字体库 -->
+    <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
+    <!-- 引入搜索框美化 -->
+    <link rel="stylesheet" href="__STATIC__/css/jquery.searchableSelect.css">
+
+    <!-- 引入页面css -->
+    <link rel="stylesheet" href="__STATIC__/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
+
+    <!-- 引入jQuery -->
+    <script src="__STATIC__/js/jquery.min.js"></script>
+
+    <!-- 引入下拉筛选框js -->
+    <script src="__STATIC__/js/jquery.searchableSelect.js"></script>
+    <!-- 引入分页js -->
+    <!--<script src="__STATIC__/js/pagination.js"></script>-->
+
+    <title>企业扶持资金拨付后台</title>
+</head>
+<body>
+{include file="public/header_nav" /}
+
+<div class="index-banner layout">
+    <!-- 面包屑导航 -->
+    <div class="breadcrumbs">
+        <a href="{:url('admin/Index/index')}">首页</a>><a href="" class="active">所有企业</a>
+    </div>
+
+
+</div>
+
+
+<div class="all_enterprise layout boxshadow">
+    <div class="palette">
+        <form action="" method="post">
+        <input class="search enterprise-search" type="text" placeholder="输入要查询的关键字">
+        <i class="fa fa-search" aria-hidden="true"></i>
+        </form>
+    </div>
+
+
+    <table cellpadding="10" class="common-table">
+        <thead>
+        <tr>
+            <td>
+                <label class="my_protocol">
+                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" id="j_cbAll"/>
+                    <span></span>扶持企业
+                </label>
+            </td>
+            <td>企业名称</td>
+            <td>企业法人</td>
+            <td>联系方式</td>
+        </tr>
+        </thead>
+
+
+        <tbody id="j_tb">
+        {foreach $list as $v}
+        <tr>
+            <td>
+                <label class="my_protocol">
+                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}"/>
+                    <span></span>
+                </label>
+            </td>
+            <td>{$v.enterprise_list_name}</td>
+            <td>{$v.enterprise_list_legal_representative}</td>
+            <td>{$v.enterprise_list_legal_phone_number}</td>
+        </tr>
+        {/foreach}
+        </tbody>
+
+
+    </table>
+
+    <div class="enterprise-foot clearfix">
+        <button class="confirm" onclick="Toast('已确定扶持企业勾选成功',2000);">确定</button>
+        <div style="float: right">{$list|raw}</div>
+    </div>
+
+</div>
+
+
+<script>
+    //顶部确定弹框
+    function Toast(msg, duration) {
+        duration = isNaN(duration) ? 3000 : duration;
+        var m = document.createElement('div');
+        m.innerHTML = msg;
+        m.style.cssText = "width: 15%;min-width: 100px;opacity: 0.7;height: 30px;color: #333;line-height: 30px;text-align: center;border-radius: 5px;position: fixed;top: 108px;left: 40%;z-index: 999999;background: #a6defd;font-size: 12px;";
+        document.body.appendChild(m);
+        setTimeout(function () {
+            var d = 0.5;
+            m.style.webkitTransition = '-webkit-transform ' + d + 's ease-in, opacity ' + d + 's ease-in';
+            m.style.opacity = '0';
+            setTimeout(function () {
+                document.body.removeChild(m)
+            }, d * 1000);
+        }, duration);
+    }
+
+
+    // 下拉搜索框
+    $(function () {
+        $('select').searchableSelect();
+    });
+    $(function () {
+        var all = document.getElementById("j_cbAll");
+        var tbody = document.getElementById("j_tb");
+        var checkboxs = tbody.getElementsByTagName("input");
+        all.onclick = function () {
+            for (var i = 0; i < checkboxs.length; i++) {
+                var checkbox = checkboxs[i];
+                checkbox.checked = this.checked;
+            }
+        };
+        for (var i = 0; i < checkboxs.length; i++) {
+            checkboxs[i].onclick = function () {
+                var isCheckedAll = true;
+                for (var i = 0; i < checkboxs.length; i++) {
+                    if (!checkboxs[i].checked) {
+                        isCheckedAll = false;
+                        break;
+                    }
+                }
+                all.checked = isCheckedAll;
+            };
+        }
+    })
+
+
+</script>
+
+
+</body>
+</html>

@@ -32,16 +32,15 @@ class HelpEnterpriseList extends Model
         return $this->belongsTo('EnterpriseList', 'enterprise_id', 'id');
     }
 
+
     /**
-     * @return array|\PDOStatement|string|\think\Collection
-     * @throws \think\db\exception\DataNotFoundException
-     * @throws \think\db\exception\ModelNotFoundException
+     * @return \think\Paginator
      * @throws \think\exception\DbException
      * 返回扶持企业列表
      */
     public function helpEnterpriseList()
     {
-        $list = self::with('enterprise')->select();
+        $list = self::with('enterprise')->paginate(15);
         return $list;
     }
 }
