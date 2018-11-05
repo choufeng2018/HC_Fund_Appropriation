@@ -6,8 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <!-- 引入字体库 -->
     <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
-    <!-- 引入搜索框美化 -->
-    <link rel="stylesheet" href="__STATIC__/css/jquery.searchableSelect.css">
 
     <!-- 引入页面css -->
     <link rel="stylesheet" href="__STATIC__/css/reset.css">
@@ -34,7 +32,7 @@
 <div class="all_enterprise layout boxshadow">
     <div class="palette">
         <form action="{:url('admin/Enterprise/enterpriseList')}" method="post">
-            <input class="search enterprise-search" type="text" placeholder="输入要查询的关键字"><button type="submit" class="fa fa-search" aria-hidden="true" name="key"></button>
+            <input class="search enterprise-search" type="text" name="key" placeholder="输入要查询的关键字"><button type="submit" class="fa fa-search" aria-hidden="true"></button>
         </form>
     </div>
 

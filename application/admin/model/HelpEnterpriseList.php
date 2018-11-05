@@ -40,7 +40,8 @@ class HelpEnterpriseList extends Model
      */
     public function helpEnterpriseList()
     {
-        $list = self::with('enterprise')->paginate(10);
+        $list = self::with('enterprise')
+            ->paginate(10);
         return $list;
     }
 }
