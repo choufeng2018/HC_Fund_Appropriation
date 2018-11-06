@@ -28,7 +28,7 @@ class Enterprise extends AdminBase
      */
     public function enterpriseList()
     {
-        $key = \input('key','');
+        $key = \input('key', '');
         $model = new EnterpriseList();
         $list = $model->allEnterpriseList($key);
         $this->assign('list', $list);
@@ -75,5 +75,10 @@ class Enterprise extends AdminBase
         } else {
             $this->error('提交方式不正确');
         }
+    }
+
+    public function HelpDetail()
+    {
+        return $this->fetch();
     }
 }
