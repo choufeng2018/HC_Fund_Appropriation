@@ -1,10 +1,164 @@
 <!DOCTYPE html>
-<html lang="zh-cmn-Hans">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入字体库 -->
+    <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
+
+    <!-- 引入页面css -->
+    <link rel="stylesheet" href="__STATIC__/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
+
+    <!-- 引入jQuery -->
+    <script src="__STATIC__/js/jquery.min.js"></script>
+
+    <title>企业扶持资金拨付后台</title>
 </head>
 <body>
+{include file="public/header_nav" /}
+
+<div class="index-banner layout">
+    <!-- 面包屑导航 -->
+    <div class="breadcrumbs">
+        <a href="{:url('admin/Index/index')}">首页</a>><a href="">扶持企业</a>><a href="" class="active">留学生创业园项目扶持资金拨付</a>
+    </div>
+
+</div>
+
+
+<div class="all_enterprise layout boxshadow">
+    <!--扶持资金拨付申请表一-->
+    <table cellpadding="10" class="detail-table-top">
+        <tbody>
+            <tr>
+                <td>序号</td>
+                <td>001</td>
+                <td>年度</td>
+                <td>2018</td>
+                <td>批次</td>
+                <td><input type="text"></td>
+            </tr>
+            <tr>
+                <td>引进人</td>
+                <td><input type="text"></td>
+                <td>企业名称</td>
+                <td><input type="text"></td>
+                <td>企业法人</td>
+                <td>田不易</td>
+            </tr>
+            <tr>
+                <td>人才姓名</td>
+                <td><input type="text"></td>
+                <td>毕业学院及学历</td>
+                <td><input type="text"></td>
+                <td>总金额(万元)</td>
+                <td><input type="text"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--扶持资金拨付申请表二-->
+    <table cellpadding="10" class="detail-table-middle">
+        <thead>
+            <tr>
+                <td>批次</td>
+                <td>拨付金额</td>
+                <td>拨付时间</td>
+                <td>操作人</td>
+                <td>已拨金额(万元)</td>
+                <td>剩余金额(万元)</td>
+                <td>操作</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>第一批</td>
+                <td>100</td>
+                <td>2018-10-24</td>
+                <td>admin</td>
+                <td>100</td>
+                <td>500</td>
+                <td class="help-operation">
+                    <a href="">查看</a>
+                    <a href="">编辑</a>
+                    <a href="">删除</a>
+                </td>
+            </tr>
+
+            <tr class="detail-table-add">
+                <td colspan="7">
+                    <a href="">+增加批次</a>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+
+    <!--扶持资金拨付申请表三-->
+    <table cellpadding="10" class="detail-table-bottom">
+        <tbody>
+        <tr>
+            <td>人才基本信息</td>
+            <td>
+                <textarea name="" id="" cols="120" rows="4"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>目前企业现状</td>
+            <td>
+                <textarea name="" id="" cols="120" rows="4"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>备注</td>
+            <td>
+                <textarea name="" id="" cols="120" rows="4"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>上传</td>
+            <td class="detail-table-upload">
+                <form action="" name="form1" method="post">
+                    <div class="aui-form-group clear">
+                        <div class="aui-form-input">
+                            <div class="aui-content-img-box aui-content-full">
+                                <div class="aui-photo aui-up-img clear">
+                                    <section class="aui-file-up fl">
+                                        <img src="__STATIC__/img/up.png" class="add-img">
+                                        <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple/>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="aui-mask aui-works-mask">
+                    <div class="aui-mask-content">
+                        <p class="aui-delete-text">确定要删除你上传的资料？</p>
+                        <p class="aui-check-text">
+                            <span class="aui-delete aui-accept-ok">确定</span>
+                            <span class="aui-accept-no">取消</span>
+                        </p>
+                    </div>
+                </div>
+
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <script src="__STATIC__/js/up.js"></script>
+
+
+</div>
+
+
+
 
 </body>
 </html>
