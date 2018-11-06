@@ -10,6 +10,7 @@ namespace app\admin\controller;
 
 use app\admin\model\EnterpriseList;
 use app\admin\model\HelpEnterpriseList;
+use think\Db;
 use think\facade\Request;
 
 /**
@@ -45,8 +46,20 @@ class Enterprise extends AdminBase
      */
     public function helpEnterpriseList()
     {
+        $year = \input('year', '');
+        $status = \input('status', '');
+        $key = \input('key', '');
         $model = new HelpEnterpriseList();
-        $list = $model->helpEnterpriseList();
+        $list = $model->helpEnterpriseList($year, $status, $key);
+//        \halt($list);
+        //年份的数组
+        $min_year = Db::name('HelpEnterpriseList')->min('create_time');
+        $min_year = \date('Y', $min_year);
+        $now_year = \date('Y');
+        for ($i = $min_year; $i <= $now_year; $i++) {
+            $years[] = \intval($i);
+        }
+        $this->assign('years', $years);
         $this->assign('list', $list);
         return $this->fetch();
     }
@@ -61,8 +74,11 @@ class Enterprise extends AdminBase
             //因为涉及到批量操作,所以强制转为数组
             $ids = \input('enterprise_id/a');
             foreach ($ids as $v) {
+                $enterpriseModel = new EnterpriseList();
+                $enterprise_name = $enterpriseModel->where('id', $v)->value('enterprise_list_name');
                 $data[] = [
                     'enterprise_id' => $v,
+                    'enterprise_name' => $enterprise_name,
                 ];
             }
             $model = new HelpEnterpriseList();
@@ -77,8 +93,27 @@ class Enterprise extends AdminBase
         }
     }
 
+    /**
+     * @return mixed
+     */
     public function HelpDetail()
     {
         return $this->fetch();
+    }
+
+    /**
+     * @throws \think\Exception
+     * @throws \think\exception\PDOException
+     * 从扶持列表中删除企业
+     */
+    public function HelpEnterpriseDel()
+    {
+        $id = \input('id');
+        $res = Db::name('HelpEnterpriseList')->where('id', $id)->delete();
+        if ($res) {
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败');
+        }
     }
 }

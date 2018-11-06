@@ -24,8 +24,6 @@
     <div class="breadcrumbs">
         <a href="{:url('admin/Index/index')}">首页</a>><a href="" class="active">扶持企业 留学生创业园项目扶持资金拨付</a>
     </div>
-
-
 </div>
 
 
@@ -33,55 +31,64 @@
     <div class="palette">
         <form action="{:url('admin/Enterprise/HelpEnterpriseList')}" method="post">
             <select class="common-palette palette-years" name="year">
-                <option value="2018" selected>2018</option>
-                <option value="2017">2017</option>
-                <option value="2016">2016</option>
-                <option value="2015">2015</option>
-                <option value="2014">2014</option>
-                <option value="2013">2013</option>
+                <option value="">选择年份</option>
+                {foreach $years as $y}
+                <option value="{$y}">{$y}</option>
+                {/foreach}
             </select>
 
-            <select class="common-palette palette-disbursement" name="disbursement" id="">
-                <option value="disbursement_during" selected>拨付中</option>
-                <option value="disbursement_over">拨付完</option>
+            <select class="common-palette palette-disbursement" name="status" id="">
+                <option value="">拨付状态</option>
+                <option value="3">待拨付</option>
+                <option value="1">拨付中</option>
+                <option value="2">拨付完</option>
             </select>
-            <input class="common-palette search enterprise-search" type="text" name="key" placeholder="输入要查询的关键字"><button type="submit" class="fa fa-search" aria-hidden="true"></button>
+            <input class="common-palette search enterprise-search" type="text" name="key" placeholder="输入要查询的关键字">
+            <button type="submit" class="fa fa-search" aria-hidden="true"></button>
         </form>
     </div>
 
 
     <table cellpadding="10" class="common-table">
         <thead>
-            <tr>
-                <td>序号</td>
-                <td>年度</td>
-                <td>总批次</td>
-                <td>总金额(万元)</td>
-                <td>企业名称</td>
-                <td>拨付状态</td>
-                <td>已拨金额(万元)</td>
-                <td>剩余金额(万元)</td>
-                <td>操作</td>
-            </tr>
+        <tr>
+            <td>序号</td>
+            <td>年度</td>
+            <td>总批次</td>
+            <td>总金额(万元)</td>
+            <td>企业名称</td>
+            <td>拨付状态</td>
+            <td>已拨金额(万元)</td>
+            <td>剩余金额(万元)</td>
+            <td>操作</td>
+        </tr>
         </thead>
 
 
         <tbody>
-            <tr>
-                <td>001</td>
-                <td>2018</td>
-                <td>6</td>
-                <td>500</td>
-                <td>淮安同年科技有限公司</td>
-                <td>拨付中</td>
-                <td>300</td>
-                <td>200</td>
-                <td class="help-operation">
-                    <a href="">查看</a>
-                    <a href="">编辑</a>
-                    <a href="">删除</a>
-                </td>
-            </tr>
+        {foreach $list as $v}
+        <tr>
+            <td>{$v.id}</td>
+            <td>{$v.create_time|date="Y"}</td>
+            <td>{$v.all_batch}</td>
+            <td>{$v.all_money}</td>
+            <td>{$v.enterprise.enterprise_list_name}</td>
+            {if $v.status eq 0}
+            <td>待拨付</td>
+            {elseif $v.status eq 1}
+            <td>拨付中</td>
+            {else}
+            <td>拨付完毕</td>
+            {/if}
+            <td>{$v.paid_money}</td>
+            <td>{$v.all_money-$v.paid_money}</td>
+            <td class="help-operation">
+                <a href="">查看</a>
+                <a href="">编辑</a>
+                <a href="{:url('admin/Enterprise/HelpEnterpriseDel',['id'=>$v.id])}">删除</a>
+            </td>
+        </tr>
+        {/foreach}
         </tbody>
 
 
@@ -92,8 +99,6 @@
     </div>
 
 </div>
-
-
 
 
 </body>

@@ -37,7 +37,6 @@ class EnterpriseList extends Model
         'prefix' => 'yk_',
     ];
 
-
     /**
      * @return \think\Paginator
      * @throws \think\exception\DbException

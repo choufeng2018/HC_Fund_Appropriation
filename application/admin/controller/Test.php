@@ -31,4 +31,10 @@ class Test extends Controller
         $res = \checkAdminPassword('123456', '$2a$08$8h1megB0F3k4DWFOgDVcU.F4ioa9/yu6a6pBFyIIYv/eGKuRkxdvK');
         \halt($res);
     }
+
+    public function time(){
+
+        dump(\mktime(0,0,0,1,1,2017));
+
+    }
 }

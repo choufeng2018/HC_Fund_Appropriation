@@ -38,9 +38,18 @@ class HelpEnterpriseList extends Model
      * @throws \think\exception\DbException
      * 返回扶持企业列表
      */
-    public function helpEnterpriseList()
+    public function helpEnterpriseList($year, $status, $key)
     {
+        $map = [];
+        if (!empty($year)) {
+            $map['create_time'] = ['between time', \mktime(0, 0, 0, 1, 1, $year), \mktime(0, 0, 0, 1, 1, $year + 1)];
+        }
+        if (!empty($status)) {
+            $map['status'] = $status;
+        }
         $list = self::with('enterprise')
+            ->where($map)
+            ->whereLike('enterprise_name', '%' . $key . '%')
             ->paginate(10);
         return $list;
     }
