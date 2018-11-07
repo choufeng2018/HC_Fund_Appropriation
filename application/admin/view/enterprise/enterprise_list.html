@@ -77,12 +77,38 @@
         <div style="float: right">{$list|raw}</div>
     </div>
 
+    <button class="btn">click</button>
+
 </div>
 
 
 <script>
+
+
+
+
+
+    // $("#j_tb .my_protocol").click(function aa(){
+    //     var checkArr = new Array();
+    //     $("#j_tb .my_protocol input[type=checkbox]:checked").each(function(i){
+    //         checkArr[i] = Number($(this).val()) ;
+    //     });
+    //     console.log(checkArr);
+    //     $.ajax({
+    //         type: 'POST',
+    //         url: "{:url('admin/Enterprise/addHelpEnterprise')}" ,
+    //         data: checkArr,
+    //         success: function () {
+    //             console.log('22')
+    //         },
+    //     });
+    // });
+
+
     //顶部确定弹框
     function Toast(msg, duration) {
+
+
         duration = isNaN(duration) ? 3000 : duration;
         var m = document.createElement('div');
         m.innerHTML = msg;
