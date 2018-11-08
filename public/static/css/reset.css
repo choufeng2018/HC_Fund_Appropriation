@@ -50,15 +50,23 @@ a{
     border: 0;
 }
 .confirm{
-    background-color: #fff;
+    background-color: #39a1db;
+    border: 1px solid #39a1db;
     padding: 5px 30px;
-    border: 1px solid #475873;
+    color: #fff;
     border-radius: 3px;
+    cursor: pointer;
 }
 .confirm:hover{
-    background-color: #39a1db;
+    background-color: #fff;
+    color: #333;
+    border: 1px solid #475873;
+}
+.confirm a {
     color: #fff;
-    border: 1px solid #39a1db;
+}
+.confirm:hover a{
+    color: #333;
 }
 .model-close{
     display: none;
