@@ -31,9 +31,8 @@
     <div class="palette">
         <form action="{:url('admin/Enterprise/HelpEnterpriseList')}" method="post">
             <select class="common-palette palette-years" name="year">
-                <option value="">选择年份</option>
                 {foreach $years as $y}
-                <option value="{$y}">{$y}</option>
+                <option value="{$y}" {if date('Y') eq $y} selected {/if}>{$y}</option>
                 {/foreach}
             </select>
 
