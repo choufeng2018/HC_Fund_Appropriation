@@ -32,7 +32,8 @@
 <div class="all_enterprise layout boxshadow">
     <div class="palette">
         <form action="{:url('admin/Enterprise/enterpriseList')}" method="post">
-            <input class="search enterprise-search" type="text" name="key" placeholder="输入要查询的关键字"><button type="submit" class="fa fa-search" aria-hidden="true"></button>
+            <input class="search enterprise-search" type="text" name="key" placeholder="输入要查询的关键字">
+            <button type="submit" class="fa fa-search" aria-hidden="true"></button>
         </form>
     </div>
 
@@ -58,7 +59,7 @@
         <tr>
             <td>
                 <label class="my_protocol">
-                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}"/>
+                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}" {if({:is_help_enterprise($v.id)})} disabled{/if}>
                     <span></span>
                 </label>
             </td>
@@ -77,37 +78,16 @@
         <div style="float: right">{$list|raw}</div>
     </div>
 
-    <button class="btn">click</button>
-
 </div>
 
 
 <script>
-
-
     //顶部确定弹框
     function Toast(msg, duration) {
 
-        var chekedL = $("#j_tb .my_protocol input[type=checkbox]:checked");
-        var checkArr = [];
 
-        for ( var i = 0; i < chekedL.length; i++ ) {
-            checkArr.push($("#j_tb .my_protocol input[type=checkbox]:checked")[i].value)
-        }
 
-        console.log(checkArr);
-        console.log(String(checkArr));
 
-        $.ajax({
-            type: 'POST',
-            url: "{:url('admin/Enterprise/addHelpEnterprise')}" ,
-            data: {
-                checkArr: checkArr
-            },
-            success: function () {
-                console.log('22')
-            },
-        })
 
         duration = isNaN(duration) ? 3000 : duration;
         var m = document.createElement('div');
@@ -123,7 +103,6 @@
             }, d * 1000);
         }, duration);
     }
-
 
 
     //多选组建
