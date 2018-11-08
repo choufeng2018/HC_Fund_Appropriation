@@ -57,7 +57,7 @@
         {foreach $list as $v}
         <tr>
             <td>
-                <label class="my_protocol" {if({:is_help_enterprise($v.id)})} style="display: none;" {/if}>
+                <label class="my_protocol" {if is_help_enterprise($v.id)} style="display: none;" {/if}>
                     <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}" />
                     <span></span>
                 </label>
