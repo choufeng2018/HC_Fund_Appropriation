@@ -58,7 +58,7 @@
         <tr>
             <td>
                 <label class="my_protocol">
-                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}"/>
+                    <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}" {if({:is_help_enterprise($v.id)})} disabled{/if}/>
                     <span></span>
                 </label>
             </td>
