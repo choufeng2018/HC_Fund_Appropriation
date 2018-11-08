@@ -73,18 +73,17 @@
             <td>{$v.all_batch}</td>
             <td>{$v.all_money}</td>
             <td>{$v.enterprise.enterprise_list_name}</td>
-            {if $v.status eq 0}
+            {if $v.status eq 3}
             <td>待拨付</td>
             {elseif $v.status eq 1}
             <td>拨付中</td>
-            {else}
+            {elseif $v.status eq 2}
             <td>拨付完毕</td>
             {/if}
             <td>{$v.paid_money}</td>
             <td>{$v.all_money-$v.paid_money}</td>
             <td class="help-operation">
-                <a href="">查看</a>
-                <a href="">编辑</a>
+                <a href="{:url('admin/Enterprise/HelpDetail',['id'=>$v.id])}">编辑</a>
                 <a href="{:url('admin/Enterprise/HelpEnterpriseDel',['id'=>$v.id])}">删除</a>
             </td>
         </tr>

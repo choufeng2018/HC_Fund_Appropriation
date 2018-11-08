@@ -72,13 +72,14 @@ class Enterprise extends AdminBase
     {
         if (Request::isPost()) {
             //因为涉及到批量操作,所以强制转为数组
-            $ids = \input('enterprise_id/a');
+            $ids = \input('checkArr');
             foreach ($ids as $v) {
                 $enterpriseModel = new EnterpriseList();
                 $enterprise_name = $enterpriseModel->where('id', $v)->value('enterprise_list_name');
                 $data[] = [
                     'enterprise_id' => $v,
                     'enterprise_name' => $enterprise_name,
+                    'status' => 3,
                 ];
             }
             $model = new HelpEnterpriseList();
