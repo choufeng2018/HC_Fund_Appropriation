@@ -99,6 +99,12 @@ class Enterprise extends AdminBase
      */
     public function HelpDetail()
     {
+        $enterprise_id = Db::name('HelpEnterpriseList')
+            ->where('id', \input('id'))
+            ->value('enterprise_id');
+        $enterprise_info = EnterpriseList::get($enterprise_id);
+//        \halt($enterprise_info);
+        $this->assign('info', $enterprise_info);
         return $this->fetch();
     }
 

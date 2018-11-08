@@ -22,7 +22,8 @@
 <div class="index-banner layout">
     <!-- 面包屑导航 -->
     <div class="breadcrumbs">
-        <a href="{:url('admin/Index/index')}">首页</a>><a href="">扶持企业</a>><a href="" class="active">留学生创业园项目扶持资金拨付</a>
+        <a href="{:url('admin/Index/index')}">首页</a>><a href="{:url('admin/Enterprise/helpEnterpriseList')}">扶持企业</a>><a
+            href="" class="active">留学生创业园项目扶持资金拨付</a>
     </div>
 
 </div>
@@ -30,70 +31,70 @@
 
 <div class="all_enterprise layout boxshadow">
 
-    <form action="">
+    <form action="{:url('admin/Enterprise/HelpEnterpriseEdit')}" method="post">
         <!--扶持资金拨付申请表一-->
         <table cellpadding="10" class="detail-table-top">
             <tbody>
-                <tr>
-                    <td>序号</td>
-                    <td>001</td>
-                    <td>年度</td>
-                    <td>2018</td>
-                    <td>批次</td>
-                    <td><input type="text"></td>
-                </tr>
-                <tr>
-                    <td>引进人</td>
-                    <td><input type="text"></td>
-                    <td>企业名称</td>
-                    <td><input type="text"></td>
-                    <td>企业法人</td>
-                    <td>田不易</td>
-                </tr>
-                <tr>
-                    <td>人才姓名</td>
-                    <td><input type="text"></td>
-                    <td>毕业学院及学历</td>
-                    <td><input type="text"></td>
-                    <td>总金额(万元)</td>
-                    <td><input type="text"></td>
-                </tr>
+            <tr>
+                <td>企业ID</td>
+                <td>{$info.id}</td>
+                <td>年度</td>
+                <td>{:date("Y")}</td>
+                <td>已拨批次</td>
+                <td>666</td>
+            </tr>
+            <tr>
+                <td>引进人</td>
+                <td><input type="text" name="introducer" placeholder="输入引进人"></td>
+                <td>企业名称</td>
+                <td>{$info.enterprise_list_name}</td>
+                <td>企业法人</td>
+                <td>{$info.enterprise_list_legal_representative}</td>
+            </tr>
+            <tr>
+                <td>人才姓名</td>
+                <td><input type="text" name="talent" placeholder="输入人才姓名"></td>
+                <td>毕业学院及学历</td>
+                <td><input type="text" name="school" placeholder="输入毕业院校及学历"></td>
+                <td>总金额(万元)</td>
+                <td><input type="text" name="all_money" placeholder="输入总金额"></td>
+            </tr>
             </tbody>
         </table>
 
         <!--扶持资金拨付申请表二-->
         <table cellpadding="10" class="detail-table-middle" id="table">
             <thead>
-                <tr>
-                    <td>批次</td>
-                    <td>拨付金额</td>
-                    <td>拨付时间</td>
-                    <td>操作人</td>
-                    <td>已拨金额(万元)</td>
-                    <td>剩余金额(万元)</td>
-                    <td>操作</td>
-                </tr>
+            <tr>
+                <td>批次</td>
+                <td>拨付金额</td>
+                <td>拨付时间</td>
+                <td>操作人</td>
+                <td>已拨金额(万元)</td>
+                <td>剩余金额(万元)</td>
+                <td>操作</td>
+            </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>第一批</td>
-                    <td>100</td>
-                    <td>2018-10-24</td>
-                    <td>admin</td>
-                    <td>100</td>
-                    <td>500</td>
-                    <td class="help-operation">
-                        <span class="help-editor">编辑</span>
-                        <span class="help-delete">删除</span>
-                    </td>
-                </tr>
+            <tr>
+                <td>第一批</td>
+                <td>100</td>
+                <td>2018-10-24</td>
+                <td>admin</td>
+                <td>100</td>
+                <td>500</td>
+                <td class="help-operation">
+                    <span class="help-editor">编辑</span>
+                    <span class="help-delete">删除</span>
+                </td>
+            </tr>
 
-                <tr class="detail-table-add">
-                    <td colspan="7">
-                        <span>+增加批次</span>
-                    </td>
-                </tr>
+            <tr class="detail-table-add">
+                <td colspan="7">
+                    <span>+增加批次</span>
+                </td>
+            </tr>
 
             </tbody>
         </table>
@@ -104,19 +105,19 @@
             <tr>
                 <td>人才基本信息</td>
                 <td>
-                    <textarea name=""  cols="120" rows="4"></textarea>
+                    <textarea name="" cols="120" rows="4"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>目前企业现状</td>
                 <td>
-                    <textarea name=""  cols="120" rows="4"></textarea>
+                    <textarea name="" cols="120" rows="4"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>备注</td>
                 <td>
-                    <textarea name=""  cols="120" rows="4"></textarea>
+                    <textarea name="" cols="120" rows="4"></textarea>
                 </td>
             </tr>
             <tr>
@@ -129,7 +130,8 @@
                                     <div class="aui-photo aui-up-img clear">
                                         <section class="aui-file-up fl">
                                             <img src="__STATIC__/img/up.png" class="add-img">
-                                            <input type="file" name="file" id="file" class="file" value="" accept="image/jpg,image/jpeg,image/png,image/bmp" multiple/>
+                                            <input type="file" name="file" id="file" class="file" value=""
+                                                   accept="image/jpg,image/jpeg,image/png,image/bmp" multiple/>
                                         </section>
                                     </div>
                                 </div>
@@ -209,10 +211,9 @@
 <script>
 
 
-
-    $(function(){
+    $(function () {
         //
-        $(".save-png").click(function(){
+        $(".save-png").click(function () {
             // 下载png图片
             domtoimage.toBlob(document.getElementById('table'))
                 .then(function (blob) {
@@ -222,26 +223,21 @@
     })
 
 
-// 添加批次
-    $('.detail-table-add').on('click',function () {
-        $('.model-mask').css('display','block')
+    // 添加批次
+    $('.detail-table-add').on('click', function () {
+        $('.model-mask').css('display', 'block')
     })
-    $('.close').on('click',function () {
-        $('.model-mask').css('display','none')
+    $('.close').on('click', function () {
+        $('.model-mask').css('display', 'none')
     })
 
 
-
-
-
-
-
-// 修改批次
-    $('.help-editor').on('click',function () {
-        $('.model-mask-2').css('display','block')
+    // 修改批次
+    $('.help-editor').on('click', function () {
+        $('.model-mask-2').css('display', 'block')
     })
-    $('.close').on('click',function () {
-        $('.model-mask-2').css('display','none')
+    $('.close').on('click', function () {
+        $('.model-mask-2').css('display', 'none')
     })
 
 
