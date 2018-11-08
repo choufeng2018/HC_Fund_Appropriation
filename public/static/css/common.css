@@ -210,7 +210,7 @@ footer a {
 }
 
 .common-table tbody tr td:nth-child(1) {
-    padding-left: 53px;
+    text-align: center;
 }
 
 .common-table tbody tr:nth-child(even) {

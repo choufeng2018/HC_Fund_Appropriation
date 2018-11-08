@@ -126,15 +126,9 @@
 
     //多选组建
     $(function () {
-        var all = document.getElementById("j_cbAll");
         var tbody = document.getElementById("j_tb");
         var checkboxs = tbody.getElementsByTagName("input");
-        all.onclick = function () {
-            for (var i = 0; i < checkboxs.length; i++) {
-                var checkbox = checkboxs[i];
-                checkbox.checked = this.checked;
-            }
-        };
+
         for (var i = 0; i < checkboxs.length; i++) {
             checkboxs[i].onclick = function () {
                 var isCheckedAll = true;
@@ -144,7 +138,6 @@
                         break;
                     }
                 }
-                all.checked = isCheckedAll;
             };
         }
     })
