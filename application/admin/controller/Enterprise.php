@@ -94,8 +94,13 @@ class Enterprise extends AdminBase
         }
     }
 
+
     /**
      * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * 扶持企业详情
      */
     public function helpDetail()
     {
@@ -108,6 +113,21 @@ class Enterprise extends AdminBase
         $enterprise_info = $enterprise_info1 + $enterprise_info2;
         $this->assign('info', $enterprise_info);
         return $this->fetch();
+    }
+
+    /**
+     *编辑扶持企业的信息
+     */
+    public function HelpEnterpriseEdit()
+    {
+        $data = \input();
+        $model = new HelpEnterpriseList();
+        $res = $model->allowField(true)->save($data, ['enterprise_id' => $data['e_id']]);
+        if ($res) {
+            $this->success('保存成功');
+        } else {
+            $this->error('保存失败');
+        }
     }
 
     /**
@@ -126,7 +146,12 @@ class Enterprise extends AdminBase
         }
     }
 
-    public function giveMoney(){
+    /**
+     * @return mixed
+     * 拨款页面
+     */
+    public function giveMoney()
+    {
         return $this->fetch();
     }
 }

@@ -32,6 +32,7 @@
 <div class="all_enterprise layout boxshadow">
 
     <form action="{:url('admin/Enterprise/HelpEnterpriseEdit')}" method="post">
+        <input type="hidden" value="{$info.id}" name="e_id">
         <!--扶持资金拨付申请表一-->
         <table cellpadding="10" class="detail-table-top">
             <tbody>
@@ -45,7 +46,7 @@
             </tr>
             <tr>
                 <td>引进人</td>
-                <td><input type="text" name="introducer" placeholder="输入引进人"></td>
+                <td><input type="text" name="introducer" placeholder="点击输入引进人"></td>
                 <td>企业名称</td>
                 <td>{$info.enterprise_list_name}</td>
                 <td>企业法人</td>
@@ -53,11 +54,11 @@
             </tr>
             <tr>
                 <td>人才姓名</td>
-                <td><input type="text" name="talent" placeholder="输入人才姓名"></td>
+                <td><input type="text" name="talent" placeholder="点击输入人才姓名"></td>
                 <td>毕业学院及学历</td>
-                <td><input type="text" name="school" placeholder="输入毕业院校及学历"></td>
+                <td><input type="text" name="school" placeholder="点击输入毕业院校及学历"></td>
                 <td>总金额(万元)</td>
-                <td><input type="text" name="all_money" placeholder="输入总金额"></td>
+                <td><input type="text" name="all_money" placeholder="点击输入总金额"></td>
             </tr>
             </tbody>
         </table>
@@ -70,19 +71,19 @@
             <tr>
                 <td>人才基本信息</td>
                 <td>
-                    <textarea name="" cols="120" rows="4"></textarea>
+                    <textarea name="talent_info" cols="120" rows="4" placeholder="请输入人才基本信息"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>目前企业现状</td>
                 <td>
-                    <textarea name="" cols="120" rows="4"></textarea>
+                    <textarea name="enterprise_info" cols="120" rows="4" placeholder="请输入企业现状"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>备注</td>
                 <td>
-                    <textarea name="" cols="120" rows="4"></textarea>
+                    <textarea name="mark" cols="120" rows="4" placeholder="请输入备注"></textarea>
                 </td>
             </tr>
             <tr>
