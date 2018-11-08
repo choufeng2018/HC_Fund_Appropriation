@@ -290,7 +290,7 @@ footer a {
 }
 
 
-.detail-table-middle{
+.detail-table-bottom{
     margin-top: 20px;
     min-width: 1160px;
     font-size: 13px;
@@ -299,17 +299,17 @@ footer a {
     text-align: center;
 }
 
-.detail-table-middle thead,.detail-table-add{
+.detail-table-bottom thead,.detail-table-add{
     cursor: pointer;
 }
-.detail-table-middle thead,.detail-table-add span{
+.detail-table-bottom thead,.detail-table-add span{
     color: #768bad;
     font-weight: 600;
     font-size: 14px;
 }
 
 
-.detail-table-middle tr td {
+.detail-table-bottom tr td {
     padding: 15px 10px;
     border-bottom: 1px solid #b9c4d6;
     color: #333;
@@ -317,32 +317,32 @@ footer a {
 
 
 
-.detail-table-bottom{
+.detail-table-middle{
     min-width: 1160px;
     margin-top: 20px;
     font-size: 13px;
     border-spacing: 0;
     color: #6f85a9;
 }
-.detail-table-bottom textarea{
+.detail-table-middle textarea{
     border: none;
     font-size: 15px;
 }
 
-.detail-table-bottom tr td {
+.detail-table-middle tr td {
     padding: 15px 10px;
     border: 1px solid #b9c4d6;
     border-left: none;
     border-top: none;
 }
 
-.detail-table-bottom tr td:last-child{
+.detail-table-middle tr td:last-child{
     border-right: none;
 }
-.detail-table-bottom tr:nth-child(1) td{
+.detail-table-middle tr:nth-child(1) td{
     border-top: 1px solid #b9c4d6;
 }
-.detail-table-bottom input {
+.detail-table-middle input {
     font-size: 13px;
     text-align: center;
     color: #333;

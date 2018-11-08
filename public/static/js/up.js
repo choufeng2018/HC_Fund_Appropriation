@@ -21,10 +21,10 @@ $(function() {
         var numUp = imgContainer.find(".aui-up-section").length;
         var totalNum = numUp + fileList.length;
         //图片总的数量可自定义
-        if (fileList.length > 3 || totalNum > 3) {
+        if (fileList.length > 8 || totalNum > 8) {
             alert("你好！上传图片不得超过3张，请重新选择");
             //一次选择上传超过3个  自己定义
-        } else if (numUp < 3) {
+        } else if (numUp < 8) {
             fileList = validateUp(fileList);
             for (var i = 0; i < fileList.length; i++) {
                 var imgUrl = window.URL.createObjectURL(fileList[i]);
@@ -58,7 +58,7 @@ $(function() {
             $(".aui-to-up-img").removeClass("aui-up-clarity");
         }, 4100);
         numUp = imgContainer.find(".aui-up-section").length;
-        if (numUp >= 3) {
+        if (numUp >= 8) {
             $(this).parent().hide();
         }
 
@@ -73,7 +73,7 @@ $(function() {
     $(".aui-accept-ok").click(function() {
         $(".aui-works-mask").hide();
         var numUp = delParent.siblings().length;
-        if (numUp < 3) {
+        if (numUp < 8) {
             delParent.parent().find(".aui-file-up").show();
         }
         delParent.remove();
