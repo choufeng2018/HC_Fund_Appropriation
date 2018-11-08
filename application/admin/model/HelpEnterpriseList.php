@@ -41,8 +41,9 @@ class HelpEnterpriseList extends Model
     public function helpEnterpriseList($year, $status, $key)
     {
         $map = [];
-        if (!empty($year)) {
-            $map['create_time'] = ['between time', \mktime(0, 0, 0, 1, 1, $year), \mktime(0, 0, 0, 1, 1, $year + 1)];
+        //不设置时间则默认显示当年列表
+        if (empty($year)) {
+            $year = \date('Y');
         }
         if (!empty($status)) {
             $map['status'] = $status;
@@ -50,6 +51,7 @@ class HelpEnterpriseList extends Model
         $list = self::with('enterprise')
             ->where($map)
             ->whereLike('enterprise_name', '%' . $key . '%')
+            ->whereBetweenTime('create_time', $year . '-' . '01' . '-' . '01', ($year + 1) . '-' . '01' . '-' . '01')
             ->paginate(10);
         return $list;
     }
