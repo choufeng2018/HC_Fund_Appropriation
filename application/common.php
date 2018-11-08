@@ -11,6 +11,8 @@
 
 // 应用公共文件
 
+use think\Db;
+
 if (!function_exists('makeAdminPassword')) {
     /**
      * @param $input_password
@@ -63,5 +65,22 @@ if (!function_exists('data_signature')) {
         $code = http_build_query($data);
         $sign = sha1($code);
         return $sign;
+    }
+}
+
+if (!function_exists('is_help_enterprise')) {
+    /**
+     * @param $enterprise_id
+     * @return bool
+     * 判断该企业是不是扶持企业
+     */
+    function is_help_enterprise($enterprise_id)
+    {
+        $res = Db::name('HelpEnterpriseList')->where('enterprise_id', $enterprise_id)->count();
+        if ($res == 0) {
+            return false;
+        } else {
+            return true;
+        }
     }
 }
