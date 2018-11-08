@@ -82,7 +82,9 @@
             <td>{$v.paid_money}</td>
             <td>{$v.all_money-$v.paid_money}</td>
             <td class="help-operation">
+                {if $v.all_money neq 0}
                 <a href="{:url('admin/Enterprise/giveMoney',['id'=>$v.id])}">拨款</a>
+                {/if}
                 <a href="{:url('admin/Enterprise/helpDetail',['id'=>$v.id])}">编辑</a>
                 <a href="{:url('admin/Enterprise/helpEnterpriseDel',['id'=>$v.id])}">删除</a>
             </td>
