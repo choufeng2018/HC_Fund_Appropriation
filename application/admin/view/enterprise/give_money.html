@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 引入字体库 -->
+    <link rel="stylesheet" href="__STATIC__/fontawesome/css/font-awesome.min.css">
+
+    <!-- 引入页面css -->
+    <link rel="stylesheet" href="__STATIC__/css/reset.css">
+    <link rel="stylesheet" href="__STATIC__/css/common.css">
+
+    <!-- 引入jQuery -->
+    <script src="__STATIC__/js/jquery.min.js"></script>
+
+    <title>企业扶持资金拨付后台</title>
+</head>
+<body>
+{include file="public/header_nav" /}
+
+<div class="index-banner layout">
+    <!-- 面包屑导航 -->
+    <div class="breadcrumbs">
+        <a href="{:url('admin/Index/index')}">首页</a>><a href="{:url('admin/Enterprise/helpEnterpriseList')}">扶持企业</a>><a
+            href="" class="active">留学生创业园项目扶持资金拨付</a>
+    </div>
+
+</div>
+
+
+<div class="all_enterprise layout boxshadow">
+
+    <!--扶持资金拨付申请表三-->
+    <table cellpadding="10" class="detail-table-bottom" id="table">
+        <thead>
+        <tr>
+            <td>批次</td>
+            <td>拨付金额</td>
+            <td>拨付时间</td>
+            <td>操作人</td>
+            <td>已拨金额(万元)</td>
+            <td>剩余金额(万元)</td>
+            <td>操作</td>
+        </tr>
+        </thead>
+
+        <tbody class="add-tabody">
+        <!--<tr>-->
+            <!--<td>第1批</td>-->
+            <!--<td>100</td>-->
+            <!--<td>2018-10-24</td>-->
+            <!--<td>admin</td>-->
+            <!--<td>100</td>-->
+            <!--<td>500</td>-->
+            <!--<td class="help-operation">-->
+                <!--<span class="help-editor">编辑</span>-->
+                <!--<span class="help-delete">删除</span>-->
+            <!--</td>-->
+        <!--</tr>-->
+
+        <tr class="detail-table-add">
+            <td colspan="7">
+                <span>+增加批次</span>
+            </td>
+        </tr>
+
+        </tbody>
+    </table>
+
+    <div class="save-png clearfix">
+        <i class="fa fa-download float-right" aria-hidden="true">项目扶持资金申请表下载</i>
+    </div>
+
+    <div class="model-mask">
+        <form action="">
+            <div class="model-mask-contnet">
+                <h4>添加批次</h4>
+                <span class="float-right close">x</span>
+                <p>
+                    拨付金额：<input class="common-input add-price" name="addPrice" type="text"><span>万元</span>
+                </p>
+                <p>
+                    拨付时间：<input class="common-input add-time" name="addTime" type="text"><span>（格式为：2018-10-24）</span>
+                </p>
+
+                <div class="save-quite">
+                    <input id="detail-add" class="confirm" value="保存">
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="model-mask-2">
+        <div class="model-mask-contnet">
+            <h4>修改批次</h4>
+            <span class="float-right close">x</span>
+            <p>
+                拨付金额：<input class="common-input" type="text"><span>万元</span>
+            </p>
+            <p>
+                拨付时间：<input class="common-input" type="text"><span>（格式为：2018-10-24）</span>
+            </p>
+
+            <div class="save-quite">
+                <input id="detail-table-add" class="confirm"  value="保存">
+            </div>
+        </div>
+    </div>
+
+
+</div>
+<script src="__STATIC__/js/up.js"></script>
+<script src="__STATIC__/js/dom-to-image.js"></script>
+<script src="__STATIC__/js/FileSaver.js"></script>
+<script>
+
+
+    $(function () {
+        //
+        $(".fa-download ").click(function () {
+            // 下载png图片
+            domtoimage.toBlob(document.getElementById('table'))
+                .then(function (blob) {
+                    window.saveAs(blob, 'my-node.png');
+                });
+        })
+    })
+
+
+    // 添加批次
+    $('.detail-table-add').on('click', function () {
+        $('.model-mask').css('display', 'block')
+        $('#detail-add').on('click',function () {
+            creatNode()
+        })
+    })
+
+
+    $('.close').on('click', function () {
+        $('.model-mask').css('display', 'none')
+    })
+
+
+    // 修改批次
+    $('.help-editor').on('click', function () {
+        $('.model-mask-2').css('display', 'block')
+    })
+    $('.close').on('click', function () {
+        $('.model-mask-2').css('display', 'none')
+    })
+
+
+    function creatNode() {
+        var $newTr = $('<tr>' +
+            '<td>第1批</td>' +
+            '<td>100</td>' +
+            '<td>2018-10-24</td>' +
+            '<td>admin</td>' +
+            '<td>100</td>' +
+            '<td>500</td>' +
+            '<td class="help-operation"><span class="help-editor">编辑</span>' +
+            '<span class="help-delete">删除</span>' +
+            '</td>' +
+            '</tr>>')
+
+        $('.add-tabody').prepend($newTr)
+    }
+</script>
+
+
+</body>
+</html>
