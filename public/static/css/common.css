@@ -148,6 +148,10 @@ footer a {
     background-color: #fff;
 }
 
+.all_enterprise>h4{
+    text-align: center;
+}
+
 .enterprise-search {
     border: 1px solid #dee5f1;
     height: 34px;
@@ -287,6 +291,7 @@ footer a {
     text-align: center;
     color: #333;
     padding: 5px;
+    border: 0;
 }
 
 

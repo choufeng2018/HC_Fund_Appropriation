@@ -31,6 +31,8 @@
 
 <div class="all_enterprise layout boxshadow">
 
+    <h4>XX有限公司</h4>
+
     <!--扶持资金拨付申请表三-->
     <table cellpadding="10" class="detail-table-bottom" id="table">
         <thead>
@@ -74,7 +76,7 @@
                 </p>
 
                 <div class="save-quite">
-                    <input id="detail-add" class="confirm" value="保存">
+                    <input id="detail-add" class="confirm" type="button" value="保存">
                 </div>
             </div>
         </form>
@@ -92,7 +94,7 @@
             </p>
 
             <div class="save-quite">
-                <input id="detail-table-add" class="confirm"  value="保存">
+                <input id="detail-table-add" class="confirm" type="button" value="保存">
             </div>
         </div>
     </div>
@@ -131,13 +133,7 @@
     })
 
 
-    // 修改批次
-    $('.help-editor').on('click', function () {
-        $('.model-mask-2').css('display', 'block')
-    })
-    $('.close').on('click', function () {
-        $('.model-mask-2').css('display', 'none')
-    })
+
 
 
     function creatNode() {
@@ -155,6 +151,24 @@
 
         $('.add-tabody').prepend($newTr)
     }
+
+    // 修改批次动态添加事件
+
+    $(document).on('click', '.help-editor', function(){
+        $('.model-mask-2').css('display', 'block')
+    });
+    $(document).on('click', '.close', function(){
+        $('.model-mask-2').css('display', 'none')
+    });
+
+
+
+    // $('.help-editor').on('click', function () {
+    //     $('.model-mask-2').css('display', 'block')
+    // })
+    // $('.close').on('click', function () {
+    //     $('.model-mask-2').css('display', 'none')
+    // })
 </script>
 
 
