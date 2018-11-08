@@ -274,6 +274,7 @@ footer a {
     border: 1px solid #b9c4d6;
     border-left: none;
     border-top: none;
+    font-weight: 600;
 }
 
 .detail-table-top tr td:last-child{
