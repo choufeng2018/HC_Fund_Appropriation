@@ -97,13 +97,15 @@ class Enterprise extends AdminBase
     /**
      * @return mixed
      */
-    public function HelpDetail()
+    public function helpDetail()
     {
         $enterprise_id = Db::name('HelpEnterpriseList')
             ->where('id', \input('id'))
             ->value('enterprise_id');
-        $enterprise_info = EnterpriseList::get($enterprise_id);
+        $enterprise_info1 = EnterpriseList::get($enterprise_id)->toArray();
 //        \halt($enterprise_info);
+        $enterprise_info2 = Db::name('HelpEnterpriseList')->where('id', \input('id'))->find();
+        $enterprise_info = $enterprise_info1 + $enterprise_info2;
         $this->assign('info', $enterprise_info);
         return $this->fetch();
     }
@@ -113,7 +115,7 @@ class Enterprise extends AdminBase
      * @throws \think\exception\PDOException
      * 从扶持列表中删除企业
      */
-    public function HelpEnterpriseDel()
+    public function helpEnterpriseDel()
     {
         $id = \input('id');
         $res = Db::name('HelpEnterpriseList')->where('id', $id)->delete();
@@ -122,5 +124,9 @@ class Enterprise extends AdminBase
         } else {
             $this->error('删除失败');
         }
+    }
+
+    public function giveMoney(){
+        return $this->fetch();
     }
 }

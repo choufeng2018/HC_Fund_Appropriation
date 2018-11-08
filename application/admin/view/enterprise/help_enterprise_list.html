@@ -70,7 +70,7 @@
         <tr>
             <td>{$v.id}</td>
             <td>{$v.create_time|date="Y"}</td>
-            <td>{$v.all_batch}</td>
+            <td>{$v.paid_batch}</td>
             <td>{$v.all_money}</td>
             <td>{$v.enterprise.enterprise_list_name}</td>
             {if $v.status eq 3}
@@ -83,8 +83,9 @@
             <td>{$v.paid_money}</td>
             <td>{$v.all_money-$v.paid_money}</td>
             <td class="help-operation">
-                <a href="{:url('admin/Enterprise/HelpDetail',['id'=>$v.id])}">编辑</a>
-                <a href="{:url('admin/Enterprise/HelpEnterpriseDel',['id'=>$v.id])}">删除</a>
+                <a href="{:url('admin/Enterprise/giveMoney',['id'=>$v.id])}">拨款</a>
+                <a href="{:url('admin/Enterprise/helpDetail',['id'=>$v.id])}">编辑</a>
+                <a href="{:url('admin/Enterprise/helpEnterpriseDel',['id'=>$v.id])}">删除</a>
             </td>
         </tr>
         {/foreach}
