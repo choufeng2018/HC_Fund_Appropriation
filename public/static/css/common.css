@@ -148,7 +148,7 @@ footer a {
     background-color: #fff;
 }
 
-.all_enterprise>h4{
+.all_enterprise > h4 {
     text-align: center;
 }
 
@@ -248,20 +248,18 @@ footer a {
     text-align: center;
 }
 
-
 /*扶持企业页面样式*/
-.help-operation a{
+.help-operation a {
     color: #000;
 }
-.help-operation a:hover{
+
+.help-operation a:hover {
     color: #46bdff;
 }
 
-
-
 /*拨付详情页面*/
 
-.detail-table-top{
+.detail-table-top {
     min-width: 1160px;
     margin-top: 20px;
     font-size: 13px;
@@ -277,16 +275,19 @@ footer a {
     font-weight: 600;
 }
 
-.detail-table-top tr td:last-child{
+.detail-table-top tr td:last-child {
     border-right: none;
 }
-.detail-table-top tr:nth-child(1) td{
+
+.detail-table-top tr:nth-child(1) td {
     border-top: 1px solid #b9c4d6;
 }
+
 .detail-table-top tr td:nth-child(even) {
     text-align: center;
     color: #333;
 }
+
 .detail-table-top input {
     font-size: 13px;
     text-align: center;
@@ -295,8 +296,7 @@ footer a {
     border: 0;
 }
 
-
-.detail-table-bottom{
+.detail-table-bottom {
     margin-top: 20px;
     min-width: 1160px;
     font-size: 13px;
@@ -305,15 +305,15 @@ footer a {
     text-align: center;
 }
 
-.detail-table-bottom thead,.detail-table-add{
+.detail-table-bottom thead, .detail-table-add {
     cursor: pointer;
 }
-.detail-table-bottom thead,.detail-table-add span{
+
+.detail-table-bottom thead, .detail-table-add span {
     color: #768bad;
     font-weight: 600;
     font-size: 14px;
 }
-
 
 .detail-table-bottom tr td {
     padding: 15px 10px;
@@ -321,16 +321,15 @@ footer a {
     color: #333;
 }
 
-
-
-.detail-table-middle{
+.detail-table-middle {
     min-width: 1160px;
     margin-top: 20px;
     font-size: 13px;
     border-spacing: 0;
     color: #6f85a9;
 }
-.detail-table-middle textarea{
+
+.detail-table-middle textarea {
     border: none;
     font-size: 15px;
 }
@@ -342,12 +341,14 @@ footer a {
     border-top: none;
 }
 
-.detail-table-middle tr td:last-child{
+.detail-table-middle tr td:last-child {
     border-right: none;
 }
-.detail-table-middle tr:nth-child(1) td{
+
+.detail-table-middle tr:nth-child(1) td {
     border-top: 1px solid #b9c4d6;
 }
+
 .detail-table-middle input {
     font-size: 13px;
     text-align: center;
@@ -355,11 +356,12 @@ footer a {
     padding: 5px;
 }
 
-.help-operation span{
+.help-operation span {
     cursor: pointer;
     color: #000;
 }
-.help-operation span:hover{
+
+.help-operation span:hover {
     cursor: pointer;
     color: #46bdff;
 }
@@ -405,7 +407,7 @@ footer a {
     display: none;
     z-index: 10;
     width: 20px;
-    cursor:pointer;
+    cursor: pointer;
 }
 
 .aui-up-section .aui-up-span {
@@ -417,7 +419,7 @@ footer a {
     top: 0px;
     left: 0px;
     z-index: 9;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
     border: 1px solid #ddd;
 }
 
@@ -437,13 +439,13 @@ footer a {
     display: block;
     width: 100%;
     height: 100%;
-    border:1px solid #ddd;
+    border: 1px solid #ddd;
 }
 
 .loading {
     border: 1px solid #D1D1D1;
     background: url(../img/loading.gif) no-repeat center;
-    background-size:20px;
+    background-size: 20px;
 }
 
 .aui-up-clarity {
@@ -472,7 +474,6 @@ footer a {
     clear: both;
 }
 
-
 .aui-up-img .aui-up-section {
     width: 130px;
     height: 130px;
@@ -487,12 +488,12 @@ footer a {
     display: block;
     width: 130px;
     height: 130px;
-    border:1px dashed #ddd;
-    border-radius:3px;
+    border: 1px dashed #ddd;
+    border-radius: 3px;
 }
 
-.img-aui-img-name-p{
-    display:none;
+.img-aui-img-name-p {
+    display: none;
 }
 
 /*遮罩层样式*/
@@ -504,7 +505,7 @@ footer a {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
 }
 
 .aui-mask .aui-mask-content {
@@ -554,7 +555,7 @@ footer a {
     border: 1px solid #EAEAEA;
     box-shadow: 0 2px 4px 0 #EFF1FA;
     border-radius: 2px;
-    padding:10px 24px 1px 24px;
+    padding: 10px 24px 1px 24px;
     width: 900px;
     margin: 0 auto;
 }
@@ -587,7 +588,7 @@ footer a {
 .aui-form-input {
     float: left;
     width: 470px;
-    position:relative;
+    position: relative;
 }
 
 .aui-form-control {
@@ -599,9 +600,9 @@ footer a {
     color: #999;
     background-color: #fff;
     border-radius: 4px;
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     height: 90px;
     resize: none;
     border: 1px solid #b3cef9;
@@ -622,9 +623,9 @@ footer a {
     background-color: #fff;
     border: 1px solid #b3cef9;
     border-radius: 4px;
-    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
-    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
 }
 
 .aui-label-control span {
@@ -636,9 +637,9 @@ footer a {
     right: 23px;
 }
 
-.aui-btn-default{
-    width:900px;
-    margin:10px auto;
+.aui-btn-default {
+    width: 900px;
+    margin: 10px auto;
     background-color: #FFF;
     border: 1px solid #EAEAEA;
     box-shadow: 0 2px 4px 0 #EFF1FA;
@@ -647,9 +648,10 @@ footer a {
     padding-top: 15px;
     padding-right: 50px;
     text-align: left;
-    padding-left:110px;
+    padding-left: 110px;
 }
-.aui-btn{
+
+.aui-btn {
     display: inline-block;
     margin-bottom: 0;
     font-weight: 400;
@@ -671,7 +673,7 @@ footer a {
     user-select: none;
 }
 
-.aui-btn-account{
+.aui-btn-account {
     background: #F45858;
     color: #FFF;
     border-radius: 2px;
@@ -680,55 +682,59 @@ footer a {
 }
 
 .aui-form-group-text {
-    padding:20px 20px 20px 80px;
+    padding: 20px 20px 20px 80px;
 }
 
-.aui-form-group-text h3{
-    font-size:13px;
-    padding-bottom:4px;
+.aui-form-group-text h3 {
+    font-size: 13px;
+    padding-bottom: 4px;
 }
 
-.aui-form-group-text p{
-    font-size:12px;
-    color:#999;
+.aui-form-group-text p {
+    font-size: 12px;
+    color: #999;
 }
 
-.aui-form-input .tips{
-    position:absolute;
+.aui-form-input .tips {
+    position: absolute;
     right: -160px;
     top: 8px;
-    color:#999;
+    color: #999;
     width: 152px;
 }
 
-.aui-form-input .tips_true{
-    color:#08c708;
+.aui-form-input .tips_true {
+    color: #08c708;
 }
 
-.aui-form-input .tips_false{
-    color:#F45858;
+.aui-form-input .tips_false {
+    color: #F45858;
 }
 
-.save-png{
+.save-png {
     font-size: 13px;;
     padding: 40px;
     cursor: pointer;
+    width: 250px;
+    margin-left: 910px
 }
-.save-png:hover{
+
+.save-png:hover {
     color: #4154de;
 }
-.save-png .fa{
+
+.save-png .fa {
     line-height: 6px;
 }
 
-.save-quite{
+.save-quite {
     text-align: center;
     margin: 30px 0;
 }
-.save-quite input{
+
+.save-quite input {
     margin: 5px 35px;
 }
-
 
 .model-mask {
     z-index: 1000;
@@ -738,7 +744,7 @@ footer a {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
 }
 
 .model-mask-2 {
@@ -749,8 +755,9 @@ footer a {
     left: 0px;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,.5);
+    background: rgba(0, 0, 0, .5);
 }
+
 .model-mask-contnet {
     width: 470px;
     position: absolute;
@@ -763,7 +770,8 @@ footer a {
     color: #333;
     padding: 15px;
 }
-.model-mask-contnet .close{
+
+.model-mask-contnet .close {
     position: relative;
     top: -74px;
     right: 5px;
@@ -771,15 +779,18 @@ footer a {
     color: #bec8d9;
     cursor: pointer;
 }
-.model-mask-contnet p{
+
+.model-mask-contnet p {
     text-align: left;
     font-size: 13px;
     padding: 10px;
 }
-.model-mask-contnet p span{
+
+.model-mask-contnet p span {
     color: #6f85a9;
 }
-.model-mask-contnet .common-input{
+
+.model-mask-contnet .common-input {
     font-size: 13px;
     text-align: center;
     color: #333;
