@@ -50,7 +50,7 @@
         <tbody class="add-tabody">
         {foreach $data.money_log as $v}
         <tr>
-            <td>第{$v.id}批</td>
+            <td>第{$v.id|num2Word}批</td>
             <td>{$v.give_money}</td>
             <td>{$v.give_money_time}</td>
             <td>{$v.handler|get_adminName_by_id}</td>
