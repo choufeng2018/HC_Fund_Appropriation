@@ -33,7 +33,9 @@
 
     <!--扶持资金拨付申请表三-->
     <table cellpadding="10" class="detail-table-bottom" id="table">
-        <caption><h2>{$data['enterprise_name']}</h2></caption>
+        <caption>
+            <h2 style="color: black">{$data['enterprise_name']}</h2>
+        </caption>
         <thead>
         <tr>
             <td>批次</td>
@@ -56,8 +58,8 @@
             <td>{$data.paid_money}</td>
             <td>{$data.all_money-$data.paid_money}</td>
             <td class="help-operation">
-                <a href="{:url('admin/Enterprise/delGiveMoney',['id'=>$v.id])}"><span class="help-editor">编辑</span></a>
-                <span class="help-delete">删除</span>
+                <span class="help-editor">编辑</span>
+                <a href="{:url('admin/Enterprise/delGiveMoney',['id'=>$v.id])}"><span class="help-delete">删除</span></a>
             </td>
         </tr>
         {/foreach}

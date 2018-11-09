@@ -175,6 +175,11 @@ class Enterprise extends AdminBase
         return $this->fetch();
     }
 
+    /**
+     *执行拨款操作;
+     * 这里需要写入拨款记录表,
+     * 对应的数据也要更新在扶持企业基本信息表中,包括:已拨款批次数,已拨款总额
+     */
     public function doGiveMoney()
     {
         \halt(\input());
