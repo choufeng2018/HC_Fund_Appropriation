@@ -11,6 +11,7 @@
 
 // 应用公共文件
 
+use app\admin\model\Admin;
 use think\Db;
 
 if (!function_exists('makeAdminPassword')) {
@@ -82,5 +83,18 @@ if (!function_exists('is_help_enterprise')) {
         } else {
             return true;
         }
+    }
+}
+
+if (!function_exists('get_adminName_by_id')) {
+    /**
+     * @param $admin_id
+     * @return mixed
+     * 根据管理员ID查找姓名
+     */
+    function get_adminName_by_id($admin_id)
+    {
+        $admin_name = Admin::where('id', $admin_id)->value('username');
+        return $admin_name;
     }
 }
