@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\EnterpriseList;
+use app\admin\model\GiveMoneyLog;
 use app\admin\model\HelpEnterpriseList;
 use think\Db;
 use think\facade\Request;
@@ -169,6 +170,7 @@ class Enterprise extends AdminBase
             ->find();
         $model = new HelpEnterpriseList();
         $data = $model->helpEnterpriseDetail($enterprise_info['enterprise_id']);
+//        \halt($data);
         $this->assign('data', $data);
         return $this->fetch();
     }
@@ -176,5 +178,19 @@ class Enterprise extends AdminBase
     public function doGiveMoney()
     {
         \halt(\input());
+    }
+
+    /**
+     *删除拨款记录
+     */
+    public function delGiveMoney()
+    {
+        $id = \input('id');
+        $res = GiveMoneyLog::destroy($id);
+        if ($res) {
+            $this->success('删除成功');
+        } else {
+            $this->error('删除失败');
+        }
     }
 }
