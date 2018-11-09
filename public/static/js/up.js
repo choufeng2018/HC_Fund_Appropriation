@@ -22,8 +22,8 @@ $(function() {
         var totalNum = numUp + fileList.length;
         //图片总的数量可自定义
         if (fileList.length > 8 || totalNum > 8) {
-            alert("你好！上传图片不得超过3张，请重新选择");
-            //一次选择上传超过3个  自己定义
+            alert("你好！上传图片不得超过8张，请重新选择");
+            //一次选择上传超过8个  自己定义
         } else if (numUp < 8) {
             fileList = validateUp(fileList);
             for (var i = 0; i < fileList.length; i++) {
@@ -40,7 +40,7 @@ $(function() {
                     $(".aui-works-mask").show();
                     delParent = $(this).parent();
                 });
-                $img0.attr("src", "./close.png").appendTo($section);
+                $img0.attr("src", "http://images.669pic.com/element_min_new_pic/26/85/11/46/1c025c5a73bb6aaebc30d9794a775497.png!/fw/260/quality/90/unsharp/true/canvas/260x256/compress/true/cvscolor/ffffffff").appendTo($section);
                 var $img = $("<img class='aui-to-up-img aui-up-clarity'>");
                 $img.attr("src", imgArr[i]);
                 $img.appendTo($section);

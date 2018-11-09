@@ -130,6 +130,10 @@ class Enterprise extends AdminBase
         }
     }
 
+    public function uploadInvoice(){
+        \halt(\input());
+    }
+
     /**
      * @throws \think\Exception
      * @throws \think\exception\PDOException
