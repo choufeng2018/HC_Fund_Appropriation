@@ -77,7 +77,9 @@ if (!function_exists('is_help_enterprise')) {
      */
     function is_help_enterprise($enterprise_id)
     {
-        $res = Db::name('HelpEnterpriseList')->where('enterprise_id', $enterprise_id)->count();
+        $res = Db::name('HelpEnterpriseList')
+            ->where('enterprise_id', $enterprise_id)
+            ->count();
         if ($res == 0) {
             return false;
         } else {

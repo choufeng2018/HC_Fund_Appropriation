@@ -1,9 +1,9 @@
-body{
+body {
     background-image: url('../img/login_bg.png');
 }
 
 /* 登陆界面登录框样式 */
-.login{
+.login {
     box-sizing: border-box;
     position: absolute;
     width: 920px;
@@ -17,52 +17,59 @@ body{
     border-radius: 5px;
 }
 
-.login-image-box{
+.login-image-box {
     width: 470px;
     height: 380px;
     margin-right: 35px;
 }
 
-.login-userinfo{
+.login-userinfo {
     width: 345px;
     color: #496086;
 }
-.login-userinfo h4{
+
+.login-userinfo h4 {
     text-align: center
 }
-.iconfont{
+
+.iconfont {
     border: 1px solid #d3deec;
     padding: 5px;
     background-color: #f3f6f9;
     font-size: 28px;
     border-right: none;
 }
-.login-input{
+
+.login-input {
     height: 44px;
     width: 290px;
     padding-left: 12px;
     border: 1px solid #d3deec;
 }
-.login-username{
+
+.login-username {
     height: 40px;
 }
-.login-password{
+
+.login-password {
     height: 40px;
     margin-top: 30px;
     margin-bottom: 30px;
 }
-.login-input-yzm{
+
+.login-input-yzm {
     width: 162px;
     margin-right: 16px;
     margin-bottom: 30px;
 }
-.login-yzm img{
+
+.login-yzm img {
     height: 40px;
     width: 130px;
     vertical-align: middle;
 }
 
-.rember{
+.rember {
     width: 0;
     height: 0;
     margin: 0;
@@ -70,8 +77,8 @@ body{
     visibility: hidden;
 }
 
-input[type=checkbox].rember+.lbl::before{
-cursor: pointer;
+input[type=checkbox].rember + .lbl::before {
+    cursor: pointer;
     font-family: fontAwesome;
     font-weight: 400;
     font-size: 12px;
@@ -79,7 +86,7 @@ cursor: pointer;
     content: "\a0";
     background-color: #FAFAFA;
     border: 1px solid #C8C8C8;
-    box-shadow: 0 1px 2px rgba(0,0,0,.05);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, .05);
     border-radius: 0;
     display: inline-block;
     text-align: center;
@@ -92,19 +99,20 @@ cursor: pointer;
     left: -4px;
 }
 
-input[type=checkbox].rember:checked+.lbl::before{
+input[type=checkbox].rember:checked + .lbl::before {
     display: inline-block;
     content: '\f00c';
     color: #32A3CE;
     background-color: #F5F8FC;
     border-color: #ADB8C0;
 }
-.lbl{
+
+.lbl {
     vertical-align: middle;
     font-size: 13px;
 }
 
-.login-login{
+.login-login {
     display: block;
     width: 350px;
     height: 60px;

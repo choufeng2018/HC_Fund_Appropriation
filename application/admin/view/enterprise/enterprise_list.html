@@ -24,7 +24,7 @@
 <div class="index-banner layout">
     <!-- 面包屑导航 -->
     <div class="breadcrumbs">
-        <a href="{:url('admin/Index/index')}">首页</a>><a href="" class="active">所有企业</a>
+        <a href="{:url('admin/Index/index')}">首页</a>><a href="{:url('admin/Enterprise/enterpriselist')}" class="active">所有企业</a>
     </div>
 
 
@@ -56,13 +56,18 @@
 
         <tbody id="j_tb">
         {foreach $list as $v}
+
         <tr>
+            {if is_help_enterprise($v.id)}
+            <td style="font-weight: bold">已是扶持企业</td>
+            {else/}
             <td>
-                <label class="my_protocol" {if is_help_enterprise($v.id)} style="display: none;" {/if}>
+                <label class="my_protocol">
                     <input class="input_agreement_protocol" name="batch_operation" type="checkbox" value="{$v.id}" />
                     <span></span>
                 </label>
             </td>
+            {/if}
             <td>{$v.enterprise_list_name}</td>
             <td>{$v.enterprise_list_legal_representative}</td>
             <td>{$v.enterprise_list_legal_phone_number}</td>
