@@ -31,14 +31,14 @@
 
 <div class="all_enterprise layout boxshadow">
 
-    <h4>XX有限公司</h4>
+    <h4>{$data['enterprise_name']}</h4>
 
     <!--扶持资金拨付申请表三-->
     <table cellpadding="10" class="detail-table-bottom" id="table">
         <thead>
         <tr>
             <td>批次</td>
-            <td>拨付金额</td>
+            <td>拨付金额(万元)</td>
             <td>拨付时间</td>
             <td>操作人</td>
             <td>已拨金额(万元)</td>
@@ -48,7 +48,20 @@
         </thead>
 
         <tbody class="add-tabody">
-
+        {foreach $data.money_log as $v}
+        <tr>
+            <td>第{$v.id}批</td>
+            <td>{$v.give_money}</td>
+            <td>{$v.give_money_time}</td>
+            <td>{$v.handler|get_adminName_by_id}</td>
+            <td>{$data.paid_money}</td>
+            <td>{$data.all_money-$data.paid_money}</td>
+            <td class="help-operation">
+                <span class="help-editor">编辑</span>
+                <span class="help-delete">删除</span>
+            </td>
+        </tr>
+        {/foreach}
 
         <tr class="detail-table-add">
             <td colspan="7">
@@ -64,18 +77,19 @@
     </div>
 
     <div class="model-mask">
-        <form action="">
+        <form action="{'admin/Enterprise/doGiveMoney'}" method="post">
             <div class="model-mask-contnet">
                 <h4>添加批次</h4>
                 <span class="float-right close">x</span>
                 <p>
-                    拨付金额：<input class="common-input add-price" name="addPrice" type="text"><span>万元</span>
+                    拨付金额：<input class="common-input add-price" name="addMoney" type="text"><span>万元</span>
                 </p>
                 <p>
                     拨付时间：<input class="common-input add-time" name="addTime" type="text"><span>（格式为：2018-10-24）</span>
                 </p>
 
                 <div class="save-quite">
+                    <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
                     <input id="detail-add" class="confirm" type="button" value="保存">
                 </div>
             </div>

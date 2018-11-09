@@ -130,7 +130,11 @@ class Enterprise extends AdminBase
         }
     }
 
-    public function uploadInvoice(){
+    /**
+     *上传发票
+     */
+    public function uploadInvoice()
+    {
         \halt(\input());
     }
 
@@ -150,12 +154,27 @@ class Enterprise extends AdminBase
         }
     }
 
+
     /**
      * @return mixed
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
      * 拨款页面
      */
     public function giveMoney()
     {
+        $enterprise_info = Db::name('HelpEnterpriseList')
+            ->where('id', \input('id'))
+            ->find();
+        $model = new HelpEnterpriseList();
+        $data = $model->helpEnterpriseDetail($enterprise_info['enterprise_id']);
+        $this->assign('data', $data);
         return $this->fetch();
+    }
+
+    public function doGiveMoney()
+    {
+        \halt(\input());
     }
 }

@@ -32,6 +32,15 @@ class HelpEnterpriseList extends Model
         return $this->belongsTo('EnterpriseList', 'enterprise_id', 'id');
     }
 
+    /**
+     * @return \think\model\relation\HasMany
+     * 关联拨款记录模型
+     */
+    public function moneyLog()
+    {
+        return $this->hasMany('GiveMoneyLog', 'enterprise_id', 'enterprise_id');
+    }
+
 
     /**
      * @return \think\Paginator
@@ -53,6 +62,20 @@ class HelpEnterpriseList extends Model
             ->whereLike('enterprise_name', '%' . $key . '%')
             ->whereBetweenTime('create_time', $year . '-' . '01' . '-' . '01', ($year + 1) . '-' . '01' . '-' . '01')
             ->paginate(10);
+        return $list;
+    }
+
+    /**
+     * @param $id
+     * @return array|null|\PDOStatement|string|Model
+     * @throws \think\db\exception\DataNotFoundException
+     * @throws \think\db\exception\ModelNotFoundException
+     * @throws \think\exception\DbException
+     * 返回企业的拨款基本信息和拨款记录
+     */
+    public function helpEnterpriseDetail($id)
+    {
+        $list = self::with('moneyLog')->where('enterprise_id',$id)->find();
         return $list;
     }
 }
