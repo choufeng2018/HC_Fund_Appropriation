@@ -31,10 +31,9 @@
 
 <div class="all_enterprise layout boxshadow">
 
-    <h4>{$data['enterprise_name']}</h4>
-
     <!--扶持资金拨付申请表三-->
     <table cellpadding="10" class="detail-table-bottom" id="table">
+        <caption><h2>{$data['enterprise_name']}</h2></caption>
         <thead>
         <tr>
             <td>批次</td>
@@ -48,16 +47,16 @@
         </thead>
 
         <tbody class="add-tabody">
-        {foreach $data.money_log as $v}
+        {foreach $data.money_log as $k=>$v}
         <tr>
-            <td>第{$v.id|num2Word}批</td>
+            <td>第{$k+1|num2Word}批</td>
             <td>{$v.give_money}</td>
             <td>{$v.give_money_time}</td>
             <td>{$v.handler|get_adminName_by_id}</td>
             <td>{$data.paid_money}</td>
             <td>{$data.all_money-$data.paid_money}</td>
             <td class="help-operation">
-                <span class="help-editor">编辑</span>
+                <a href="{:url('admin/Enterprise/delGiveMoney',['id'=>$v.id])}"><span class="help-editor">编辑</span></a>
                 <span class="help-delete">删除</span>
             </td>
         </tr>
@@ -127,7 +126,7 @@
             // 下载png图片
             domtoimage.toBlob(document.getElementById('table'))
                 .then(function (blob) {
-                    window.saveAs(blob, 'my-node.png');
+                    window.saveAs(blob, "{$data['enterprise_name']}拨款明细.png");
                 });
         })
     })
@@ -136,7 +135,7 @@
     // 添加批次
     $('.detail-table-add').on('click', function () {
         $('.model-mask').css('display', 'block')
-        $('#detail-add').on('click',function () {
+        $('#detail-add').on('click', function () {
             creatNode()
         })
     })
@@ -145,9 +144,6 @@
     $('.close').on('click', function () {
         $('.model-mask').css('display', 'none')
     })
-
-
-
 
 
     function creatNode() {
@@ -168,13 +164,12 @@
 
     // 修改批次动态添加事件
 
-    $(document).on('click', '.help-editor', function(){
+    $(document).on('click', '.help-editor', function () {
         $('.model-mask-2').css('display', 'block')
     });
-    $(document).on('click', '.close', function(){
+    $(document).on('click', '.close', function () {
         $('.model-mask-2').css('display', 'none')
     });
-
 
 
     // $('.help-editor').on('click', function () {
