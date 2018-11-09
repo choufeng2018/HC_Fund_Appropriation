@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f1d464fd4450ddff628008b74ec6ae9d",
+    "content-hash": "007cbc5790790860ab306b3cb57a79ed",
     "packages": [
         {
             "name": "topthink/framework",
-            "version": "v5.1.27",
+            "version": "v5.1.28",
             "source": {
                 "type": "git",
                 "url": "https://github.com/top-think/framework.git",
-                "reference": "f607b8fd51cc25e4da7e2f4ef0d5e64f390d36bd"
+                "reference": "b5077520855a1f406205687c73cdeaee1ed618c2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/top-think/framework/zipball/f607b8fd51cc25e4da7e2f4ef0d5e64f390d36bd",
-                "reference": "f607b8fd51cc25e4da7e2f4ef0d5e64f390d36bd",
+                "url": "https://api.github.com/repos/top-think/framework/zipball/b5077520855a1f406205687c73cdeaee1ed618c2",
+                "reference": "b5077520855a1f406205687c73cdeaee1ed618c2",
                 "shasum": "",
                 "mirrors": [
                     {
@@ -61,7 +61,7 @@
                 "orm",
                 "thinkphp"
             ],
-            "time": "2018-10-22T02:10:08+00:00"
+            "time": "2018-10-29T02:52:45+00:00"
         },
         {
             "name": "topthink/think-captcha",
@@ -107,6 +107,48 @@
             ],
             "description": "captcha package for thinkphp5",
             "time": "2017-12-31T16:37:49+00:00"
+        },
+        {
+            "name": "topthink/think-helper",
+            "version": "v1.0.6",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/top-think/think-helper.git",
+                "reference": "0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/top-think/think-helper/zipball/0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f",
+                "reference": "0c99dc625b0d2d4124e1b6ca15a3ad6f0125963f",
+                "shasum": "",
+                "mirrors": [
+                    {
+                        "url": "https://dl.laravel-china.org/%package%/%reference%.%type%",
+                        "preferred": true
+                    }
+                ]
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "think\\helper\\": "src"
+                },
+                "files": [
+                    "src/helper.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "authors": [
+                {
+                    "name": "yunwuxin",
+                    "email": "448901948@qq.com"
+                }
+            ],
+            "description": "The ThinkPHP5 Helper Package",
+            "time": "2017-04-05T07:15:37+00:00"
         },
         {
             "name": "topthink/think-installer",
