@@ -78,8 +78,9 @@
 
     <div class="enterprise-foot clearfix">
         <button class="confirm" onclick="Toast('已确定扶持企业勾选成功',2000);">确定</button>
-        <button class="confirm"><a href="{:url('admin/Enterprise/helpEnterpriseList')}" target="_blank">扶持企业列表</a>
-        </button>
+        <a href="{:url('admin/Enterprise/helpEnterpriseList')}" target="_blank">
+            <button class="confirm">扶持企业列表</button>
+        </a>
         <div style="float: right">{$list|raw}</div>
     </div>
 
