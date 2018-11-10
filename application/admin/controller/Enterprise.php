@@ -205,13 +205,37 @@ class Enterprise extends AdminBase
         }
     }
 
+    /**
+     *编辑拨款操作
+     */
     public function editGiveMoney()
     {
-        $give_info = GiveMoneyLog::get(\input('data_id'));
-        \halt($give_info);
-//        开启事务
 
-        //查出这拨款信息,先去扶持列表里恢复这次拨款之前的拨款总金额,然后再加上修改后的金额
+        //开启事务
+        Db::transaction(function () {
+            $give_info = GiveMoneyLog::get(\input('data_id'));
+            //先去修改原来的总拨款金额
+            Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', $give_info['enterprise_id'])
+                ->setDec('paid_money', $give_info['give_money']);
+            //然后修改拨款记录
+            $fields = [
+                'give_money_time' => \input('change_time'),
+                'give_money' => \input('change_money'),
+            ];
+            Db::name('GiveMoneyLog')
+                ->where('id', \input('data_id'))
+                ->setField($fields);
+            //最后数据再写入扶持列表
+            $res = Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', $give_info['enterprise_id'])
+                ->setInc('paid_money', \input('change_money'));
+            if ($res){
+                return \json(['code'=>1, 'msg' => 'OK']);
+            }else{
+                return \json(['code'=>0, 'msg' => 'Fail']);
+            }
+        });
     }
 
     /**
