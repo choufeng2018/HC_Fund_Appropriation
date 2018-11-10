@@ -104,10 +104,10 @@
             <h4>修改批次</h4>
             <span class="float-right close">x</span>
             <p>
-                拨付金额：<input class="common-input" type="text"><span>万元</span>
+                拨付金额：<input class="common-input change-money" type="text"><span>万元</span>
             </p>
             <p>
-                拨付时间：<input class="common-input" type="text"><span>（格式为：2018-10-24）</span>
+                拨付时间：<input class="common-input change-time" type="text"><span>（格式为：2018-10-24）</span>
             </p>
 
             <div class="save-quite">
@@ -152,12 +152,41 @@
 
     $(document).on('click', '.help-editor', function () {
         $('.model-mask-2').css('display', 'block')
+        var _this = this;
+
+        $('#detail-table-add').on('click',function () {
+            var $data_id = _this.data('id')
+            var $change_money = $(".change-money").val()
+            var $change_time = $(".change-time").val()
+
+            $.ajax({
+                type: 'POST',
+                url: "{:url('admin/Enterprise/addHelpEnterprise')}",
+                data: {
+                    data_id: $data_id,
+                    change_money:$change_money,
+                    change_time:$change_time
+                },
+                success: function () {
+                    $('.model-mask-2').css('display', 'none')
+                },
+            })
+
+        })
+
+
+
+
+
+
     });
+
+
     $(document).on('click', '.close', function () {
         $('.model-mask-2').css('display', 'none')
     });
 
-    console.log($(".help-editor").attr("data-id"));
+
 
 </script>
 
