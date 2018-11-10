@@ -64,20 +64,21 @@
         </table>
 
 
-
         <!--扶持资金拨付申请表二-->
         <table cellpadding="10" class="detail-table-middle">
             <tbody>
             <tr>
                 <td>人才基本信息</td>
                 <td>
-                    <textarea name="talent_info" cols="120" rows="4" placeholder="请输入人才基本信息">{$info.talent_info}</textarea>
+                    <textarea name="talent_info" cols="120" rows="4"
+                              placeholder="请输入人才基本信息">{$info.talent_info}</textarea>
                 </td>
             </tr>
             <tr>
                 <td>目前企业现状</td>
                 <td>
-                    <textarea name="enterprise_info" cols="120" rows="4" placeholder="请输入企业现状">{$info.enterprise_info}</textarea>
+                    <textarea name="enterprise_info" cols="120" rows="4"
+                              placeholder="请输入企业现状">{$info.enterprise_info}</textarea>
                 </td>
             </tr>
             <tr>
@@ -155,9 +156,7 @@
     }
 
     var upload = tinyImgUpload('#uploadss', options);
-    document.getElementsByClassName('submit')[0].onclick = function (e) {
-        upload();
-    }
+
 </script>
 
 
