@@ -31,7 +31,7 @@
 
 <div class="all_enterprise layout boxshadow">
 
-    <form action="{:url('admin/Enterprise/HelpEnterpriseEdit')}" method="post">
+    <form action="{:url('admin/Enterprise/HelpEnterpriseEdit')}" method="post" enctype="multipart/form-data">
         <input type="hidden" value="{$info.id}" name="e_id">
         <!--扶持资金拨付申请表一-->
         <table cellpadding="10" class="detail-table-top">
@@ -89,31 +89,7 @@
             <tr>
                 <td>上传</td>
                 <td class="detail-table-upload">
-                    <form action="" name="form1" method="post">
-                        <div class="aui-form-group clear">
-                            <div class="aui-form-input">
-                                <div class="aui-content-img-box aui-content-full">
-                                    <div class="aui-photo aui-up-img clear">
-                                        <section class="aui-file-up fl">
-                                            <img src="__STATIC__/img/up.png" class="add-img">
-                                            <input type="file" name="file" id="file" class="file" value=""
-                                                   accept="image/jpg,image/jpeg,image/png,image/bmp" multiple/>
-                                        </section>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                    <div class="aui-mask aui-works-mask">
-                        <div class="aui-mask-content">
-                            <p class="aui-delete-text">确定要删除你上传的资料？</p>
-                            <p class="aui-check-text">
-                                <span class="aui-delete aui-accept-ok">确定</span>
-                                <span class="aui-accept-no">取消</span>
-                            </p>
-                        </div>
-                    </div>
+                        <div></div>
 
                 </td>
             </tr>

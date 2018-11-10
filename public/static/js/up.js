@@ -56,7 +56,7 @@ $(function() {
         setTimeout(function() {
             $(".aui-up-section").removeClass("loading");
             $(".aui-to-up-img").removeClass("aui-up-clarity");
-        }, 4100);
+        }, 2100);
         numUp = imgContainer.find(".aui-up-section").length;
         if (numUp >= 8) {
             $(this).parent().hide();
@@ -108,7 +108,8 @@ $(function() {
                 alert('您这个"' + file.name + '"没有类型, 无法识别');
             }
         }
-        return arrFiles;
+        console.log(arrFiles);
+        //return arrFiles;
     }
 
 })

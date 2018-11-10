@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>图片上传</title>
+    <link rel="stylesheet" href="__STATIC__/css/tinyImgUpload.css">
+</head>
+<body>
+
+<div id="uploadss"></div>
+<button class="submit">submit</button>
+<script src="__STATIC__/js/tinyImgUpload.js"></script>
+<script>
+    document.documentElement.style.fontSize = document.documentElement.clientWidth*0.1+'px';
+
+    var options = {
+        path: "{:url('admin/Test/doUpLoad')}",
+        onSuccess: function (res) {
+            console.log(res);
+        },
+        onFailure: function (res) {
+            console.log(res);
+        }
+    }
+
+    var upload = tinyImgUpload('#uploadss', options);
+    document.getElementsByClassName('submit')[0].onclick = function (e) {
+        upload();
+    }
+</script>
+</body>
+</html>
