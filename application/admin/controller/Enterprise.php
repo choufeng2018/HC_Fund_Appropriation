@@ -9,6 +9,7 @@
 namespace app\admin\controller;
 
 use app\admin\model\EnterpriseList;
+use app\admin\model\Files;
 use app\admin\model\GiveMoneyLog;
 use app\admin\model\HelpEnterpriseList;
 use think\Db;
@@ -125,17 +126,19 @@ class Enterprise extends AdminBase
         $model = new HelpEnterpriseList();
         $res = $model->allowField(true)->save($data, ['enterprise_id' => $data['e_id']]);
 
-        $files = \request()->file('image');
-        if($files) {
+        $files = \request()->file('files');
+        if ($files) {
             foreach ($files as $file) {
                 // 移动到框架应用根目录/uploads/ 目录下
                 $info = $file->move('../uploads');
                 if ($info) {
-                    // 成功上传后 获取上传信息
-                    // 输出 jpg
-                    echo $info->getExtension();
-                    // 输出 42a79759f284b767dfcb2a0197904287.jpg
-                    echo $info->getFilename();
+                    // 成功上传后 获取上传信息并写入数据库
+                    $img_data = [
+                        'enterprise_id' => $data['e_id'],
+                        'file_path' => $info->getSaveName(),
+                    ];
+                    $file_model = new Files();
+                    $file_model->save($img_data);
                 } else {
                     // 上传失败获取错误信息
                     echo $file->getError();
@@ -248,10 +251,10 @@ class Enterprise extends AdminBase
             $res = Db::name('HelpEnterpriseList')
                 ->where('enterprise_id', $give_info['enterprise_id'])
                 ->setInc('paid_money', \input('change_money'));
-            if ($res){
-                return \json(['code'=>1, 'msg' => 'OK']);
-            }else{
-                return \json(['code'=>0, 'msg' => 'Fail']);
+            if ($res) {
+                return \json(['code' => 1, 'msg' => 'OK']);
+            } else {
+                return \json(['code' => 0, 'msg' => 'Fail']);
             }
         });
     }
