@@ -208,6 +208,7 @@ class Enterprise extends AdminBase
     public function editGiveMoney()
     {
         \halt(\input());
+        //查出这拨款信息,先去扶持列表里恢复这次拨款之前的拨款总金额,然后再加上修改后的金额
     }
 
     /**
