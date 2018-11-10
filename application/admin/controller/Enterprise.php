@@ -170,7 +170,6 @@ class Enterprise extends AdminBase
             ->find();
         $model = new HelpEnterpriseList();
         $data = $model->helpEnterpriseDetail($enterprise_info['enterprise_id']);
-//        \halt($data);
         $this->assign('data', $data);
         return $this->fetch();
     }
@@ -182,7 +181,28 @@ class Enterprise extends AdminBase
      */
     public function doGiveMoney()
     {
-        \halt(\input());
+        $data = [
+            'enterprise_id' => \input('enterprise_id'),
+            'give_money_time' => \input('addTime'),
+            'give_money' => \input('addMoney'),
+            'handler' => \session('admin_auth.admin_id'),
+        ];
+        $model = new GiveMoneyLog();
+        $res = $model->save($data);
+        if ($res) {
+            //拨款成功后将相关数据写入企业扶持表
+            $id = Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', \input('enterprise_id'))
+                ->value('id');
+            $helpEnterprise = HelpEnterpriseList::get($id);
+            $helpEnterprise->paid_batch = ['inc', 1];   //已拨款次数+1
+            $helpEnterprise->paid_money = ['inc', \input('addMoney')];    //增加已拨款金额
+            $helpEnterprise->status = 1;    //修改拨款状态
+            $helpEnterprise->save();
+            return \redirect('admin/Enterprise/giveMoney',['id'=>$id]);
+        } else {
+            $this->error('添加失败');
+        }
     }
 
     /**
@@ -191,8 +211,11 @@ class Enterprise extends AdminBase
     public function delGiveMoney()
     {
         $id = \input('id');
+        $help_info = GiveMoneyLog::get($id);
         $res = GiveMoneyLog::destroy($id);
         if ($res) {
+            //同时更新扶持列表基本信息的内容
+
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

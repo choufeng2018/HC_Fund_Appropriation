@@ -78,7 +78,7 @@
     </div>
 
     <div class="model-mask">
-        <form action="{'admin/Enterprise/doGiveMoney'}" method="post">
+        <form action="{:url('admin/Enterprise/doGiveMoney')}" method="post">
             <div class="model-mask-contnet">
                 <h4>添加批次</h4>
                 <span class="float-right close">x</span>
@@ -91,7 +91,7 @@
 
                 <div class="save-quite">
                     <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
-                    <input id="detail-add" class="confirm" type="button" value="保存">
+                    <input id="detail-add" class="confirm" type="submit" value="保存">
                 </div>
             </div>
         </form>
@@ -137,32 +137,12 @@
     // 添加批次
     $('.detail-table-add').on('click', function () {
         $('.model-mask').css('display', 'block')
-        $('#detail-add').on('click', function () {
-            creatNode()
-        })
     })
 
 
     $('.close').on('click', function () {
         $('.model-mask').css('display', 'none')
     })
-
-
-    function creatNode() {
-        var $newTr = $('<tr>' +
-            '<td>第1批</td>' +
-            '<td>100</td>' +
-            '<td>2018-10-24</td>' +
-            '<td>admin</td>' +
-            '<td>100</td>' +
-            '<td>500</td>' +
-            '<td class="help-operation"><span class="help-editor">编辑</span>' +
-            '<span class="help-delete">删除</span>' +
-            '</td>' +
-            '</tr>>')
-
-        $('.add-tabody').prepend($newTr)
-    }
 
     // 修改批次动态添加事件
 
