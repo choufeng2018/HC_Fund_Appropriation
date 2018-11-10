@@ -98,6 +98,7 @@
     </div>
 
     <div class="model-mask-2">
+        <form action="{:url('')}" method="post">
         <div class="model-mask-contnet">
             <h4>修改批次</h4>
             <span class="float-right close">x</span>
@@ -109,9 +110,11 @@
             </p>
 
             <div class="save-quite">
-                <input id="detail-table-add" class="confirm" type="button" value="保存">
+                <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
+                <input id="detail-table-add" class="confirm" type="submit" value="保存">
             </div>
         </div>
+        </form>
     </div>
 
 
@@ -153,13 +156,6 @@
         $('.model-mask-2').css('display', 'none')
     });
 
-
-    // $('.help-editor').on('click', function () {
-    //     $('.model-mask-2').css('display', 'block')
-    // })
-    // $('.close').on('click', function () {
-    //     $('.model-mask-2').css('display', 'none')
-    // })
 </script>
 
 
