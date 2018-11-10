@@ -207,7 +207,10 @@ class Enterprise extends AdminBase
 
     public function editGiveMoney()
     {
-        \halt(\input());
+        $give_info = GiveMoneyLog::get(\input('data_id'));
+        \halt($give_info);
+//        开启事务
+
         //查出这拨款信息,先去扶持列表里恢复这次拨款之前的拨款总金额,然后再加上修改后的金额
     }
 
@@ -225,12 +228,12 @@ class Enterprise extends AdminBase
             Db::name('HelpEnterpriseList')
                 ->where('enterprise_id', $help_info['enterprise_id'])
                 ->setDec('paid_batch', 1);
-            //剪掉已拨款金额
+            //减掉已拨款金额
             Db::name('HelpEnterpriseList')
                 ->where('enterprise_id', $help_info['enterprise_id'])
                 ->setDec('paid_money', $help_info['give_money']);
 
-            //再查询拨款情况,如果拨款次数为0,怎改status=0
+            //再查询拨款情况,如果拨款次数为0,更改status=0
             $info = Db::name('HelpEnterpriseList')
                 ->where('enterprise_id', $help_info['enterprise_id'])
                 ->find();

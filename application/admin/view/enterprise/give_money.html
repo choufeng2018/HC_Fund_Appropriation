@@ -99,22 +99,22 @@
     </div>
 
     <div class="model-mask-2">
-        <form action="{:url('admin/Enterprise/editGiveMoney')}" method="post">
-        <div class="model-mask-contnet">
-            <h4>修改批次</h4>
-            <span class="float-right close">x</span>
-            <p>
-                拨付金额：<input class="common-input change-money" type="text"><span>万元</span>
-            </p>
-            <p>
-                拨付时间：<input class="common-input change-time" type="text"><span>（格式为：2018-10-24）</span>
-            </p>
+        <form action="" method="post">
+            <div class="model-mask-contnet">
+                <h4>修改批次</h4>
+                <span class="float-right close">x</span>
+                <p>
+                    拨付金额：<input class="common-input change-money" type="text"><span>万元</span>
+                </p>
+                <p>
+                    拨付时间：<input class="common-input change-time" type="text"><span>（格式为：2018-10-24）</span>
+                </p>
 
-            <div class="save-quite">
-                <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
-                <input id="detail-table-add" class="confirm" type="submit" value="保存">
+                <div class="save-quite">
+                    <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
+                    <input id="detail-table-add" class="confirm" type="button" value="保存">
+                </div>
             </div>
-        </div>
         </form>
     </div>
 
@@ -151,21 +151,21 @@
     // 修改批次动态添加事件
 
     $(document).on('click', '.help-editor', function () {
-        $('.model-mask-2').css('display', 'block')
+        $('.model-mask-2').css('display', 'block');
         var _this = this;
 
-        $('#detail-table-add').on('click',function () {
-            var $data_id = _this.data('id')
-            var $change_money = $(".change-money").val()
-            var $change_time = $(".change-time").val()
+        $('#detail-table-add').on('click', function () {
+            var $data_id = _this.getAttribute('data-id');
+            var $change_money = $(".change-money").val();
+            var $change_time = $(".change-time").val();
 
             $.ajax({
                 type: 'POST',
-                url: "{:url('admin/Enterprise/addHelpEnterprise')}",
+                url: "{:url('admin/Enterprise/editGiveMoney')}",
                 data: {
                     data_id: $data_id,
-                    change_money:$change_money,
-                    change_time:$change_time
+                    change_money: $change_money,
+                    change_time: $change_time
                 },
                 success: function () {
                     $('.model-mask-2').css('display', 'none')
@@ -173,19 +173,12 @@
             })
 
         })
-
-
-
-
-
-
     });
 
 
     $(document).on('click', '.close', function () {
         $('.model-mask-2').css('display', 'none')
     });
-
 
 
 </script>
