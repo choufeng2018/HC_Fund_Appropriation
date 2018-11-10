@@ -89,7 +89,7 @@
             <tr>
                 <td>上传</td>
                 <td class="detail-table-upload">
-                    <div>eee</div>
+                    <div id="uploadss"></div>
                 </td>
             </tr>
 
@@ -140,6 +140,24 @@
     })
 
 
+</script>
+<script src="__STATIC__/js/tinyImgUpload.js"></script>
+<script>
+
+    var options = {
+        path: "{:url('admin/Test/doUpLoad')}",
+        onSuccess: function (res) {
+            console.log(res);
+        },
+        onFailure: function (res) {
+            console.log(res);
+        }
+    }
+
+    var upload = tinyImgUpload('#uploadss', options);
+    document.getElementsByClassName('submit')[0].onclick = function (e) {
+        upload();
+    }
 </script>
 
 
