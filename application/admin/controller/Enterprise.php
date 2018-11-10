@@ -199,10 +199,15 @@ class Enterprise extends AdminBase
             $helpEnterprise->paid_money = ['inc', \input('addMoney')];    //增加已拨款金额
             $helpEnterprise->status = 1;    //修改拨款状态
             $helpEnterprise->save();
-            return \redirect('admin/Enterprise/giveMoney',['id'=>$id]);
+            return \redirect('admin/Enterprise/giveMoney', ['id' => $id]);
         } else {
             $this->error('添加失败');
         }
+    }
+
+    public function editGiveMoney()
+    {
+        \halt(\input());
     }
 
     /**
@@ -215,7 +220,25 @@ class Enterprise extends AdminBase
         $res = GiveMoneyLog::destroy($id);
         if ($res) {
             //同时更新扶持列表基本信息的内容
+            //拨款批次-1
+            Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', $help_info['enterprise_id'])
+                ->setDec('paid_batch', 1);
+            //剪掉已拨款金额
+            Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', $help_info['enterprise_id'])
+                ->setDec('paid_money', $help_info['give_money']);
 
+            //再查询拨款情况,如果拨款次数为0,怎改status=0
+            $info = Db::name('HelpEnterpriseList')
+                ->where('enterprise_id', $help_info['enterprise_id'])
+                ->find();
+            if ($info['paid_batch'] == 0) {
+                //改拨款状态
+                Db::name('HelpEnterpriseList')
+                    ->where('enterprise_id', $help_info['enterprise_id'])
+                    ->setField('status', 0);
+            }
             $this->success('删除成功');
         } else {
             $this->error('删除失败');

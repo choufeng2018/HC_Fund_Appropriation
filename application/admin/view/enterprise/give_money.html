@@ -58,7 +58,7 @@
             <td>{$data.paid_money}</td>
             <td>{$data.all_money-$data.paid_money}</td>
             <td class="help-operation">
-                <span class="help-editor">编辑</span>
+                <span class="help-editor" data-id="{$v.id}">编辑</span>
                 <a href="{:url('admin/Enterprise/delGiveMoney',['id'=>$v.id])}"><span class="help-delete">删除</span></a>
             </td>
         </tr>
@@ -90,6 +90,7 @@
                 </p>
 
                 <div class="save-quite">
+                    <input type="hidden" id="help_id" value="" name="help_id">
                     <input type="hidden" value="{$data.enterprise_id}" name="enterprise_id">
                     <input id="detail-add" class="confirm" type="submit" value="保存">
                 </div>
@@ -98,7 +99,7 @@
     </div>
 
     <div class="model-mask-2">
-        <form action="{:url('')}" method="post">
+        <form action="{:url('admin/Enterprise/editGiveMoney')}" method="post">
         <div class="model-mask-contnet">
             <h4>修改批次</h4>
             <span class="float-right close">x</span>
@@ -155,6 +156,8 @@
     $(document).on('click', '.close', function () {
         $('.model-mask-2').css('display', 'none')
     });
+
+    console.log($(".help-editor").attr("data-id"));
 
 </script>
 
