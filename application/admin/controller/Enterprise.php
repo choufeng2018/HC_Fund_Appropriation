@@ -110,9 +110,11 @@ class Enterprise extends AdminBase
             ->where('id', \input('id'))
             ->value('enterprise_id');
         $enterprise_info1 = EnterpriseList::get($enterprise_id)->toArray();
-//        \halt($enterprise_info);
-        $enterprise_info2 = Db::name('HelpEnterpriseList')->where('id', \input('id'))->find();
+        $model = new HelpEnterpriseList();
+        $enterprise_info2 = $model->helpEnterpriseDetail($enterprise_id)->toArray();
+//        $enterprise_info2 = Db::name('HelpEnterpriseList')->where('id', \input('id'))->find();
         $enterprise_info = $enterprise_info1 + $enterprise_info2;
+//        \halt($enterprise_info);
         $this->assign('info', $enterprise_info);
         return $this->fetch();
     }
@@ -125,23 +127,25 @@ class Enterprise extends AdminBase
         $data = \input();
         $model = new HelpEnterpriseList();
         $res = $model->allowField(true)->save($data, ['enterprise_id' => $data['e_id']]);
-
-        $files = \request()->file('files');
-        if ($files) {
-            foreach ($files as $file) {
-                // 移动到框架应用根目录/uploads/ 目录下
-                $info = $file->move('../uploads');
-                if ($info) {
-                    // 成功上传后 获取上传信息并写入数据库
-                    $img_data = [
-                        'enterprise_id' => $data['e_id'],
-                        'file_path' => $info->getSaveName(),
-                    ];
-                    $file_model = new Files();
-                    $file_model->save($img_data);
-                } else {
-                    // 上传失败获取错误信息
-                    echo $file->getError();
+        if ($_FILES['files']['name'][0]) {
+            //tp5.0是不需要上面这行代码的,但是5.1.28则会报错.必须这么判断才可以
+            $files = \request()->file('files');
+            if ($files) {
+                foreach ($files as $file) {
+                    // 移动到框架应用根目录/public/uploads/ 目录下
+                    $info = $file->move('../public/uploads');
+                    if ($info) {
+                        // 成功上传后 获取上传信息并写入数据库
+                        $img_data = [
+                            'enterprise_id' => $data['e_id'],
+                            'file_path' => $info->getSaveName(),
+                        ];
+                        $file_model = new Files();
+                        $file_model->save($img_data);
+                    } else {
+                        // 上传失败获取错误信息
+                        echo $file->getError();
+                    }
                 }
             }
         }
@@ -286,7 +290,7 @@ class Enterprise extends AdminBase
                 //改拨款状态
                 Db::name('HelpEnterpriseList')
                     ->where('enterprise_id', $help_info['enterprise_id'])
-                    ->setField('status', 0);
+                    ->setField('status', 3);
             }
             $this->success('删除成功');
         } else {

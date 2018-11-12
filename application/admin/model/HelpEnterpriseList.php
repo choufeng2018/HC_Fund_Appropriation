@@ -41,6 +41,14 @@ class HelpEnterpriseList extends Model
         return $this->hasMany('GiveMoneyLog', 'enterprise_id', 'enterprise_id');
     }
 
+    /**
+     * @return \think\model\relation\HasMany
+     * 关联附件模型
+     */
+    public function files(){
+        return $this->hasMany('Files', 'enterprise_id', 'enterprise_id');
+    }
+
 
     /**
      * @return \think\Paginator
@@ -75,7 +83,9 @@ class HelpEnterpriseList extends Model
      */
     public function helpEnterpriseDetail($id)
     {
-        $list = self::with('moneyLog')->where('enterprise_id',$id)->find();
+        $list = self::with('moneyLog,files')
+            ->where('enterprise_id',$id)
+            ->find();
         return $list;
     }
 }
