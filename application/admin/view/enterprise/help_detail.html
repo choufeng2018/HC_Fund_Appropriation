@@ -97,13 +97,16 @@
             <tr>
                 <td>已上传图片:</td>
                 <td>
-                    <ul>
-                        {foreach $info.files as $f}
-                        <li style="display: inline"><img src="{$f.file_path}" alt="" height="100">
-                            <div id="del-pic" onclick="del_pic({$f.id})"><strong>×</strong></div>
-                        </li>
-                        {/foreach}
-                    </ul>
+                    {foreach $info.files as $f}
+                    <div>
+                        <div style="float: left">
+                            <img src="{$f.file_path}" alt="" height="100">
+                        </div>
+                        <div id="del-pic" onclick="del_pic({$f.id})">
+                            <strong>×</strong>
+                        </div>
+                    </div>
+                    {/foreach}
                 </td>
             </tr>
             {/if}
@@ -186,6 +189,7 @@
             dataType: 'json',
             success: function (data) {
                 if (data.code == 1) {
+                    // 以后这里可以加layer弹窗什么的
                     console.log(data.code);
                     location.reload();
                 } else {
