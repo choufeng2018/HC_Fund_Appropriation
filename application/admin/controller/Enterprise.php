@@ -297,4 +297,20 @@ class Enterprise extends AdminBase
             $this->error('删除失败');
         }
     }
+
+    /**
+     * @return array
+     * 删除图片
+     */
+    public function delPic()
+    {
+        $res = Files::destroy(\input('id'));
+        if ($res) {
+            $data = ['code' => 1, 'msg' => 'OK'];
+            return $data;
+        } else {
+            $data = ['code' => 0, 'msg' => 'Fail'];
+            return $data;
+        }
+    }
 }

@@ -99,7 +99,9 @@
                 <td>
                     <ul>
                         {foreach $info.files as $f}
-                        <li style="display: inline"><img src="{$f.file_path}" alt="" height="100"></li>
+                        <li style="display: inline"><img src="{$f.file_path}" alt="" height="100">
+                            <div id="del-pic" onclick="del_pic({$f.id})"><strong>×</strong></div>
+                        </li>
                         {/foreach}
                     </ul>
                 </td>
@@ -171,6 +173,30 @@
 
 </script>
 
-
+<!--删除图片-->
+<script>
+    function del_pic(pic_id) {
+        $.ajax({
+            type: 'post',
+            url: "{:url('admin/Enterprise/delPic')}",
+            async: true,
+            data: {
+                id: pic_id,
+            },
+            dataType: 'json',
+            success: function (data) {
+                if (data.code == 1) {
+                    console.log(data.code);
+                    location.reload();
+                } else {
+                    console.log(data.code);
+                }
+            },
+            error: function () {
+                alert('系统异常');
+            }
+        });
+    }
+</script>
 </body>
 </html>

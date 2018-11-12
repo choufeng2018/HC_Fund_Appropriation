@@ -23,7 +23,6 @@ class Files extends Model
      * @var bool
      */
     protected $autoWriteTimestamp = true;
-    protected $visible=['file_path'];
 
     /**
      * @param $path

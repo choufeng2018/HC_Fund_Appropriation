@@ -25,7 +25,7 @@ class Test extends Controller
 
     public function makepwd()
     {
-        $pwd = \makeAdminPassword(123456);
+        $pwd = \makeAdminPassword(15195386000);
         \halt($pwd);
     }
 
