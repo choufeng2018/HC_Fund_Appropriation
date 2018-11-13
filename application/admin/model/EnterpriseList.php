@@ -40,7 +40,7 @@ class EnterpriseList extends Model
     /**
      * @return \think\Paginator
      * @throws \think\exception\DbException
-     * 返回所有企业列表
+     * 返回所有企业列表(可根据企业名进行搜索)
      */
     public function allEnterpriseList($key)
     {
